@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
    protected $table = 'users';
                // llave primaria
-    protected $primaryKey = 'ID-Usuario';
+    protected $primaryKey = 'ID_Usuario';
     
     protected $fillable = [
     'name',
