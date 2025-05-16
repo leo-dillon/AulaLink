@@ -62,8 +62,8 @@
     <a href="{{ route('home.index') }}"
        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Inicio</a>
 
-    <a href="#"
-       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+    <a href="{{ route('UserEdit',['id' => Auth::user()->ID_Usuario]) }}"
+       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Editar Perfil</a>
 
     <form action="{{ route('login.logout') }}" method="POST">
       @csrf
