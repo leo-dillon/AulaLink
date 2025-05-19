@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 class RegisterController  extends Controller
 {
-    public function index()
+    public function index() 
     {
         // trae todos los datos de la vase
           $Login = User::all();

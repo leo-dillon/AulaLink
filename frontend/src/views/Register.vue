@@ -1,9 +1,10 @@
 
 <script setup>
+import axios from 'axios'
 import { ref } from 'vue'
 
 const form = ref({
-  name: '',
+  firstName: '',
   lastName: '',
   gender: '',
   birthdate: '',
@@ -14,7 +15,6 @@ const form = ref({
   password: '',
   asset: true,
   photo: null,
-  userRole_id: 1,
 })
 
 const errorMessage = ref('')
@@ -22,10 +22,11 @@ const errorMessage = ref('')
 const handleRegister = async () => {
   try {
     // Aquí podés usar axios para enviar los datos al backend
-    console.log('Enviando datos:', form.value)
-    errorMessage.value = ''
+    const response = await axios.post('http://localhost:8000/api/user/create', form.value)
+    console.log(response)
   } catch (error) {
     errorMessage.value = 'Error al registrar el usuario.'
+    console.log(error)
   }
 }
 </script>
@@ -37,7 +38,7 @@ const handleRegister = async () => {
       <form @submit.prevent="handleRegister" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-          <input v-model="form.name" type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input v-model="form.firstName" type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
@@ -79,10 +80,6 @@ const handleRegister = async () => {
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Foto (URL o base64)</label>
           <input v-model="form.photo" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Rol</label>
-          <input v-model="form.userRole_id" type="number" required class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
         <div class="col-span-full">
           <button
