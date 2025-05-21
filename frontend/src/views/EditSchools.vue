@@ -5,8 +5,8 @@ import { useRoute } from 'vue-router'
 import { validateInstitutionForm } from '@/utils/validationForms/validationSchoolsForm '
 
 const route = useRoute();
-//const id = route.params.id; // El ID viene desde la URL
-const id = 1; // ⬆⬆El ID viene desde la URL
+const id = route.params.id; // El ID viene desde la URL
+//const id = 1; // ⬆⬆El ID viene desde la URL
 
 const Shool = reactive(
     {

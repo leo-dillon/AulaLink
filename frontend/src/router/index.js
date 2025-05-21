@@ -33,7 +33,7 @@ const router = createRouter({
       component: () => import('../views/CreateSchools.vue')
     },
     {
-      path: '/editar_escuela',
+      path: '/editar_escuela/:id',
       name: 'editar_escuela',
       component: () => import('../views/EditSchools.vue')
     }, 
