@@ -1,17 +1,23 @@
 
 <script setup>
     import { ref } from 'vue'
+    import axios from 'axios'
 
-    const email = ref('')
-    const password = ref('')
+    const data = ref({
+        email: '',
+        password: ''
+    })
     const errorMessage = ref('')
 
     const handleLogin = async () => {
     try {
-        // Acá iría tu lógica de login, por ejemplo con axios
-        console.log('Login con:', email.value, password.value)
-        // Resetear error si todo sale bien
+        const response = await axios.post('http://localhost:8000/api/user/login', data.value)
+        // Guardando JWT
+        localStorage.setItem('token', response.data.jwt)
         errorMessage.value = ''
+        console.log(response.status)
+        location.href = '/'
+
     } catch (error) {
         errorMessage.value = 'Correo o contraseña incorrectos.'
     }
@@ -29,7 +35,7 @@
                     <input
                         type="email"
                         id="email"
-                        v-model="email"
+                        v-model="data.email"
                         required
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
@@ -39,7 +45,7 @@
                     <input
                         type="password"
                         id="password"
-                        v-model="password"
+                        v-model="data.password"
                         required
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />

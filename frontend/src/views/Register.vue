@@ -4,34 +4,34 @@ import axios from 'axios'
 import { validateRegisterForm } from '@/utils/validationForms/validationRegisterForm'
 import { ref } from 'vue'
 
-// const form = ref({
-//   firstName: '',
-//   lastName: '',
-//   gender: '',
-//   birthdate: '',
-//   dni: '',
-//   email: '',
-//   address: '',
-//   phone: '',
-//   password: '',
-//   asset: true,
-//   photo: null,
-// })
-
-//                ----------------------------  TEST -------------------------
 const form = ref({
-  firstName: 'test',
-  lastName: 'Test_1',
-  gender: 'Masculino',
-  birthdate: '1930-01-01',
-  dni: '10000000',
-  email: 'test_1@gmail.com',
-  address: 'Una dirección valida de Test_1',
-  phone: '2324000000',
-  password: 'test_1',
+  firstName: '',
+  lastName: '',
+  gender: '',
+  birthdate: '',
+  dni: '',
+  email: '',
+  address: '',
+  phone: '',
+  password: '',
   asset: true,
   photo: null,
 })
+
+//                ----------------------------  TEST -------------------------
+// const form = ref({
+//   firstName: 'test',
+//   lastName: 'Test_1',
+//   gender: 'Masculino',
+//   birthdate: '1930-01-01',
+//   dni: '10000000',
+//   email: 'test_1@gmail.com',
+//   address: 'Una dirección valida de Test_1',
+//   phone: '2324000000',
+//   password: 'test_1',
+//   asset: true,
+//   photo: null,
+// })
 
 let errorMessage = ref('')
 let validateError = ref({})
