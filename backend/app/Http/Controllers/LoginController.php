@@ -28,4 +28,11 @@ class LoginController extends Controller
             'message' => 'Las cedenciales son incorrectas'
         ], 401);
     }
+
+    public function logout(){
+        Auth::logout();
+        return response() -> json([
+            'message' => 'Sisión cerrada'
+        ]);
+    }
 }

@@ -9,3 +9,6 @@ Route::post('/user/create', [RegisterController::class, 'store'])
 
 Route::post('/user/login', [LoginController::class, 'auth'])
     -> name('user.login');
+
+Route::post('/user/logout', [LoginController::class, 'auth'])
+    -> name('user.logout');
