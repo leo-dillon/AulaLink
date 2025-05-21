@@ -26,7 +26,17 @@ const router = createRouter({
       path: '/registrarse',
       name: 'registrarse',
       component: () => import('../views/Register.vue')
-    }
+    },
+    {
+      path: '/crear_escuela',
+      name: 'crear_escuela',
+      component: () => import('../views/CreateSchools.vue')
+    },
+    {
+      path: '/editar_escuela',
+      name: 'editar_escuela',
+      component: () => import('../views/EditSchools.vue')
+    }, 
   ],
 })
 

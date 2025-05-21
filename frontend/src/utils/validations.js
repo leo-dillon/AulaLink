@@ -93,3 +93,65 @@ export function validatePassword(password){
     
     return message
 }
+
+//--------------------- INSTITUCIONES--------------------------------------------
+export function validateNameInstitution(Name){
+    let message = ""
+    if(!Name) message += "`Debes completar este campo.`"
+    else if(Name.trim().length < 2) message += "El nombre debe tener más de 2 caracteres."
+    return message
+}
+export function validateCUEInstitution(CUE){
+    let message = ""
+    if(!CUE) message += "Debes completar EL CUE de la institucion."
+    return message
+}
+export function validateAddressInstitution(Address){
+    let message = ""
+    if(!Address) message += "Debes completar este campo."
+    return message
+}
+export function validateLocalityInstitution(Locality){
+    let message = ""
+   if(!Locality) message += "`Debes completar este campo.`"
+    else if(Locality.trim().length < 3) message += "El nombre debe tener más de 2 caracteres."
+    return message
+}
+export function validateProvinceInstitution(Province){
+    let message = ""
+   if(!Province) message += "`Debes completar este campo.`"
+    else if(Province.trim().length < 3) message += "El nombre debe tener más de 2 caracteres."
+    return message
+}
+export function validatePhoneInstitution(Phone){
+    let message = ""
+    const cleaned = Phone.toString().replace(/\D/g, '') // quitar espacios y símbolos
+
+   if (!Phone) message += 'Debes ingresar un número de teléfono.'
+   else if (!/^\d+$/.test(cleaned)) {
+        message += 'El teléfono solo puede contener números.'
+    } 
+  else if (cleaned.length !== 10) {
+        message += 'El número debe tener exactamente 10 dígitos (sin 0 ni 15).'
+    } // ejemplo 2324 697491 => interior BSAR 10 caracteres sin espacios
+   
+    return message
+}
+export function validateEmailInstitution(Email){
+    let message = ""
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if(!Email) message += "Debes incluir este campo"
+    if( !regex.test(Email) ) message += "Email invalido"
+
+    return message
+}
+export function validateNivelInstitution(Nivel){
+    let message = ""
+        if(!Nivel) message += "Debes marcar el nivel de educacion."
+    return message
+}
+export function validateTipoInstitution(Tipo){
+let message = ""
+        if(!Tipo) message += "Debes marcar el Tipo de gestion."
+    return message
+}
