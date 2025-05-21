@@ -20,20 +20,20 @@ import { ref } from 'vue'
 
 //                ----------------------------  TEST -------------------------
 const form = ref({
-  firstName: 'Leo',
-  lastName: 'Dillon',
+  firstName: 'test',
+  lastName: 'Test_1',
   gender: 'Masculino',
-  birthdate: '1999-03-16',
-  dni: '41781369',
-  email: 'leo@gmail.com',
-  address: 'Una dirección valida',
-  phone: '2324697491',
-  password: 'leo123',
+  birthdate: '1930-01-01',
+  dni: '10000000',
+  email: 'test_1@gmail.com',
+  address: 'Una dirección valida de Test_1',
+  phone: '2324000000',
+  password: 'test_1',
   asset: true,
   photo: null,
 })
 
-const errorMessage = ref('')
+let errorMessage = ref('')
 let validateError = ref({})
 
 const handleRegister = async () => {
@@ -41,19 +41,15 @@ const handleRegister = async () => {
     const validateResult = validateRegisterForm(form.value)
     validateError.value = validateResult  
 
-    console.log(form.value)
-
-    if(!(Object.keys(validateError).length === 0)){
-      console.log('El objeto esta lleno')
+    if(!(Object.keys(validateError.value).length === 0)){
     }else{
-      console.log('El objeto esta vacio')
+      const response = await axios.post('http://localhost:8000/api/user/create', form.value)
     }
     // Aquí podés usar axios para enviar los datos al backend
-    // const response = await axios.post('http://localhost:8000/api/user/create', form.value)
-    // console.log(response)
   } catch (error) {
     errorMessage.value = 'Error al registrar el usuario.'
-    console.log(error)
+    if(error.response?.data.errors.dni[0])     validateError.value.dni = 'El DNI ya esta registrado.'
+    if(error.response?.data.errors.email[0])   validateError.value.email = 'El email ya esta registrado.'
   }
 }
 </script>

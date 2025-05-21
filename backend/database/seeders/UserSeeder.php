@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'name' => 'Ticiano',
+                    'firstName' => 'Ticiano',
                     'lastName' => 'Piccino Pujol' ,
                     'gender' => 'Masculino' ,
                     'birthdate' =>  '2005-06-21',

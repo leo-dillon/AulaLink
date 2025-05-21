@@ -1,8 +1,17 @@
-import { validateAddress, validateBirthdate, validateDNI, validateEmail, validateFirstName, validateGenre, validateLastName, validatePassword, validatephone } from "../validations.js"
+import { 
+    validateAddress, 
+    validateBirthdate, 
+    validateDNI, 
+    validateEmail, 
+    validateFirstName, 
+    validateGenre, 
+    validateLastName, 
+    validatePassword, 
+    validatephone } from "../validations.js"
 
 export function validateRegisterForm( data ){
-    const errors = {}
-    const { 
+    let errors = {}
+    let { 
         firstName, 
         lastName,
         gender,
@@ -33,13 +42,13 @@ export function validateRegisterForm( data ){
     if( resultValidationGmail.length > 3 ) errors.email = resultValidationGmail
 
     const resultValidationAddress = validateAddress(address)
-    if( resultValidationAddress ) errors.address = resultValidationAddress
+    if( resultValidationAddress.length > 3 ) errors.address = resultValidationAddress
 
     const resultValidationphone = validatephone(phone)
-    if( resultValidationphone ) errors.phone = resultValidationphone
+    if( resultValidationphone.length > 3 ) errors.phone = resultValidationphone
 
     const resultValidationPassword = validatePassword(password)
-    if( resultValidationPassword ) errors.password = resultValidationPassword
+    if( resultValidationPassword.length > 3 ) errors.password = resultValidationPassword
 
     return errors
 }

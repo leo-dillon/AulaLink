@@ -20,7 +20,6 @@ export function validateGenre(genre){
 }
 
 export function validateBirthdate(birthdate){
-    console.log(birthdate)
     let message = ""
     const date = new Date(birthdate)
     const today = new Date()
@@ -28,7 +27,7 @@ export function validateBirthdate(birthdate){
     const monthDif = today.getMonth() - date.getMonth()     // Se usará para saber si cumplio o no años
     const dayDif = today.getDate() - date.getDate()         // Se usará para saber si cumplio o no años
     
-    const age = ageDif
+    let age = ageDif
     if( monthDif < 0 || ( monthDif == 0 && dayDif < 0 ) ){  // si mothDif menor a 0 aun no cumplio años
         age -= 1                                            // Si mothDif es 0 y dayDif es menor a 0 aun no cumplio años
     }                                                       // Contrarío. Si cumplio años
