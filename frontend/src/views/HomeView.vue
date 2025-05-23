@@ -1,15 +1,18 @@
 <script setup>
   import TheWelcome from '../components/TheWelcome.vue'
   import MainInstitutionSubjects from '../components/InstitutionComponents/MainInstitutionSubjects.vue'
-  import Sidebar from '../components/InstitutionComponents/Sidebar.vue'
+  import Sidebar from '../components/InstitutionComponents/SideBar.vue'
+  
+  const login = localStorage.getItem('token')
 
 </script>
 
 <template>
   <main>
-    <TheWelcome />
-
-    <div class="bg-gray-100 min-h-screen flex">
+    <div v-if="!login">
+      <TheWelcome />
+    </div>
+    <div v-else class="bg-gray-100 min-h-screen flex">
       <Sidebar/>
       <MainInstitutionSubjects/>
     </div>

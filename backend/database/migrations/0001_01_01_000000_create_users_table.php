@@ -24,10 +24,15 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('asset')->default(true);
             $table->string('photo')->nullable();
-            $table->unsignedBigInteger('userRole_id')->nullable();
+            $table->unsignedBigInteger('userRole_id');
             $table->timestamp('creationDate')->useCurrent();
             $table->timestamp('lastConnection')->nullable();
             $table->timestamps();
+
+
+            //Claves foráneas 
+           // $table->foreign('userRole_id')->references('ID_UserRolEscuela')->on('usuario_rol_escuela');
+
         });
 
         // Schema::create('password_reset_tokens', function (Blueprint $table) {
