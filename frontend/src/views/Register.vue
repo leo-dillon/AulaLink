@@ -20,15 +20,15 @@ const form = ref({
 
 //                ----------------------------  TEST -------------------------
 // const form = ref({
-//   firstName: 'test',
-//   lastName: 'Test_1',
+//   firstName: 'test_2',
+//   lastName: 'Test_2',
 //   gender: 'Masculino',
 //   birthdate: '1930-01-01',
-//   dni: '10000000',
-//   email: 'test_1@gmail.com',
+//   dni: '10000001',
+//   email: 'test_2@gmail.com',
 //   address: 'Una dirección valida de Test_1',
 //   phone: '2324000000',
-//   password: 'test_1',
+//   password: 'test_2',
 //   asset: true,
 //   photo: null,
 // })
@@ -44,6 +44,9 @@ const handleRegister = async () => {
     if(!(Object.keys(validateError.value).length === 0)){
     }else{
       const response = await axios.post('http://localhost:8000/api/user/create', form.value)
+      if(response.status == 200){
+        location.href = "/"
+      }
     }
     // Aquí podés usar axios para enviar los datos al backend
   } catch (error) {

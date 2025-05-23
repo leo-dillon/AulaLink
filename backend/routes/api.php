@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\user\LoginController;
+use App\Http\Controllers\user\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\EditInstitucionController;
 
@@ -12,7 +12,7 @@ Route::post('/user/create', [RegisterController::class, 'store'])
 Route::post('/user/login', [LoginController::class, 'auth'])
     -> name('user.login');
 
-Route::post('/user/logout', [LoginController::class, 'auth'])
+Route::post('/user/logout', [LoginController::class, 'logout'])
     -> name('user.logout');
 
 // crea las instituciones

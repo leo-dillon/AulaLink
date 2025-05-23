@@ -1,27 +1,8 @@
-import { 
-    validateAddress, 
-    validateBirthdate, 
-    validateDNI, 
-    validateEmail, 
-    validateFirstName, 
-    validateGenre, 
-    validateLastName, 
-    validatePassword, 
-    validatephone } from "../validations.js"
+import { validateAddress, validateBirthdate, validateDNI, validateEmail, validateFirstName, validateGenre, validateLastName, validatePassword, validatephone } from "../validations.js"
 
 export function validateRegisterForm( data ){
     let errors = {}
-    let { 
-        firstName, 
-        lastName,
-        gender,
-        birthdate,
-        dni, 
-        email, 
-        address,
-        phone,
-        password
-    } = data
+    let {firstName, lastName, gender, birthdate, dni, email, address, phone, password} = data
 
     const resultValidationFistName = validateFirstName(firstName)
     if( resultValidationFistName.length > 3 ) errors.firstName = resultValidationFistName 
