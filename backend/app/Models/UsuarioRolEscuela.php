@@ -15,7 +15,7 @@ class UsuarioRolEscuela extends Model
     protected $fillable = [
         'Usuario_ID',
         'Escuela_ID',
-        // 'Rol_ID',
+         'Rol_ID',
     ];
 
     // Relaciones
@@ -28,5 +28,9 @@ class UsuarioRolEscuela extends Model
     {
         return $this->belongsTo(Institucion::class, 'Escuela_ID', 'ID_Escuela');
     }
+    public function rol()
+{
+    return $this->belongsTo(\App\Models\Role::class, 'Rol_ID', 'ID_Rol');
+}
 }
 

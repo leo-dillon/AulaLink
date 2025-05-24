@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\EditInstitucionController;
 use App\Http\Controllers\UsuarioRolEscuelaController;
+use App\Http\Controllers\RoleController;
 
 Route::post('/user/create', [RegisterController::class, 'store'])
     -> name('user.create');
@@ -29,3 +30,4 @@ Route::put('/Editar/Institucion/{id}', [EditInstitucionController::class, 'updat
 //
 Route::get('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'index']);
 Route::post('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'store']);
+Route::get('/roles', [RoleController::class, 'index']);

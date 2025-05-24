@@ -28,12 +28,17 @@
             {{ escuela.nombre }}
           </li>
         </ul>
+        <div class="mb-4">
+  <label>Rol:</label>
+  <select v-model="Rol_ID" class="border p-2 w-full" required>
+    <option value="">Seleccione un rol</option>
+    <option v-for="rol in roles" :key="rol.ID_Rol" :value="rol.ID_Rol">
+      {{ rol.Nombre }}
+    </option>
+  </select>
+</div>
       </div>
 
-      <div class="mb-4">
-        <label>ID Escuela Seleccionada:</label>
-        <input :value="Escuela_ID" disabled class="border p-2 w-full bg-gray-100" />
-      </div>
 
       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Asignar</button>
     </form>
@@ -42,7 +47,7 @@
       <h3 class="font-semibold">Asignaciones existentes:</h3>
       <ul>
         <li v-for="asignacion in asignaciones" :key="asignacion.ID_UserRolEscuela">
-          {{ asignacion.usuario?.firstName }} {{ asignacion.usuario?.lastName }} - {{ asignacion.escuela?.nombre }}
+          {{ asignacion.usuario?.firstName }} {{ asignacion.usuario?.lastName }}
         </li>
       </ul>
     </div>
@@ -58,7 +63,8 @@ const Escuela_ID = ref('')
 const busquedaEscuela = ref('')
 const sugerencias = ref([])
 const asignaciones = ref([])
-
+const Rol_ID = ref('')
+const roles = ref([])
 const buscarEscuelas = async () => {
   if (busquedaEscuela.value.length < 2) {
     sugerencias.value = []
@@ -89,16 +95,25 @@ const cargarAsignaciones = async () => {
     console.error('Error al cargar asignaciones', error)
   }
 }
-
+const cargarRoles = async () => {
+  try {
+    const res = await axios.get('http://localhost:8000/api/roles')
+    roles.value = res.data
+  } catch (error) {
+    console.error('Error al cargar roles', error)
+  }
+}
 const asignar = async () => {
   try {
     await axios.post('http://localhost:8000/api/usuario-rol-escuela', {
       Usuario_ID: parseInt(Usuario_ID.value),
       Escuela_ID: parseInt(Escuela_ID.value),
+      Rol_ID: parseInt(Rol_ID.value)
     })
 
     Usuario_ID.value = ''
     Escuela_ID.value = ''
+    Rol_ID.value = ''
     busquedaEscuela.value = ''
     await cargarAsignaciones()
   } catch (error) {
@@ -109,5 +124,6 @@ const asignar = async () => {
 
 onMounted(() => {
   cargarAsignaciones()
+   cargarRoles()
 })
 </script>
