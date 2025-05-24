@@ -31,7 +31,7 @@ const Shool = reactive(
       return
     }
     // Envía POST a Laravel 
-     await axios.post('http://127.0.0.1:8000/api/CreateInstituciones', Shool)
+await axios.post(`${import.meta.env.VITE_API_URL}/api/CreateInstituciones`, Shool)
   
     alert('Institución creada con éxito')
     // limpiar formulario

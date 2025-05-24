@@ -43,7 +43,7 @@ const handleRegister = async () => {
 
     if(!(Object.keys(validateError.value).length === 0)){
     }else{
-      const response = await axios.post('http://localhost:8000/api/user/create', form.value)
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/create`, form.value)
     }
     // Aquí podés usar axios para enviar los datos al backend
   } catch (error) {

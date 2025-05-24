@@ -26,7 +26,7 @@ const Shool = reactive(
 // Obtener datos al cargar
 onMounted(async () => {
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/api/Editar/Institucion/${id}`);
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/Editar/Institucion/${id}`);
     Object.assign(Shool, res.data);
   } catch (error) {
     console.error("Error al cargar institución", error);
