@@ -38,15 +38,12 @@ class DatosRolController extends Controller
 }
 
 
-
-
-
-
     // Guardar los datos rellenados por el usuario para ese rol
     public function store(Request $request)
     {
+        
         $request->validate([
-            'ID_UserRolEscuela' => 'required|exists:usuario_rol_escuela,ID_UserRolEscuela',
+            'ID_UserRolEscuela' => 'required|exists:usuario_rol_escuela, ID_UserRolEscuela',
             'Datos' => 'required|array',
         ]);
 

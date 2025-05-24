@@ -87,7 +87,7 @@ export default {
 },
 
     guardarDatosRol() {
-      axios.post('/api/datos-roles', {
+      axios.post(`${import.meta.env.VITE_API_URL}/api/datos-roles`, {
         idUsuario: this.idUsuario,
         Datos: this.datosFormulario
       })

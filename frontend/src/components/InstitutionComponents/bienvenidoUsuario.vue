@@ -11,7 +11,7 @@
             Bienvenido
         </h2>
         <AsignarUsuarioEscuela/>
-        <FormularioRoles :idUsuario="6" />
+        <FormularioRoles :idUsuario="5" />
         <RouterLink to="/editar">
             Editar Usuario 
         </RouterLink>

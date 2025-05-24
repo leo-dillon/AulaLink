@@ -100,7 +100,7 @@ const handleSubmit = async () => {
 
         <div>
           <label class="block text-gray-700 font-semibold">Teléfonos</label>
-          <input v-model="Shool.Telefonos" type="text" class="mt-1 block w-full rounded border-gray-300 shadow-sm" />
+          <input v-model="Shool.Telefonos" type="tel" class="mt-1 block w-full rounded border-gray-300 shadow-sm" />
           <small v-if="validateError.Telefonos" class="text-red-500">
             {{ (validateError.Telefonos) }}
           </small>
