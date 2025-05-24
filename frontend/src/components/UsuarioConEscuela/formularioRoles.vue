@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     cargarCamposDinamicos() {
-      axios.get(`http://localhost:8000/api/campos-dinamicos/${this.idUserRolEscuela}`)
+      axios.get(`${import.meta.env.VITE_API_URL}/api/campos-dinamicos/${this.idUserRolEscuela}`)
         .then(res => {
           this.nombreRol = res.data.rol;
           this.camposFormulario = res.data.campos;

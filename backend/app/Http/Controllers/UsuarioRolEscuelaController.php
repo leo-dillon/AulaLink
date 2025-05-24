@@ -20,7 +20,14 @@ class UsuarioRolEscuelaController extends Controller
             'Escuela_ID' => 'required|exists:schools,ID_Escuela',
             'Rol_ID' => 'required|exists:roles,ID_Rol',
         ]);
+$yaExiste = UsuarioRolEscuela::where('Usuario_ID', $request->Usuario_ID)
+            ->where('Escuela_ID', $request->Escuela_ID)
+            ->where('Rol_ID', $request->Rol_ID)
+            ->exists();
 
+        if ($yaExiste) {
+            return response()->json(['message' => 'Ya existe una asignación con esos mismos datos.'], 409);
+        }
         $asignacion = UsuarioRolEscuela::create([
             'Usuario_ID' => $request->Usuario_ID,
             'Escuela_ID' => $request->Escuela_ID,

@@ -1,57 +1,85 @@
 <template>
-  <div class="p-4 max-w-xl mx-auto">
-    <h2 class="text-xl font-bold mb-4">Asignar Usuario a Escuela</h2>
+  <div class="p-6 max-w-xl mx-auto bg-white shadow-lg rounded-xl">
+  <h2 class="text-2xl font-bold mb-6 text-center text-blue-700">Asignar Usuario a Escuela</h2>
 
-    <form @submit.prevent="asignar">
-      <div class="mb-4">
-        <label>Usuario ID:</label>
-        <input v-model="Usuario_ID" class="border p-2 w-full" type="number" required />
-      </div>
+  <form @submit.prevent="asignar" class="space-y-5">
+    <!-- Usuario -->
+    <div>
+      <label class="block mb-1 font-semibold text-gray-700">Usuario ID:</label>
+      <input
+        v-model="Usuario_ID"
+        class="border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        type="number"
+        required
+      />
+    </div>
 
-      <div class="mb-4 relative">
-        <label>Buscar Escuela:</label>
-        <input
-          v-model="busquedaEscuela"
-          @input="buscarEscuelas"
-          class="border p-2 w-full"
-          type="text"
-          autocomplete="off"
-          placeholder="Escribí el nombre de la escuela"
-        />
-        <ul v-if="sugerencias.length" class="absolute z-10 bg-white border w-full">
-          <li
-            v-for="escuela in sugerencias"
-            :key="escuela.ID_Escuela"
-            @click="seleccionarEscuela(escuela)"
-            class="px-4 py-2 hover:bg-blue-100 cursor-pointer"
-          >
-            {{ escuela.nombre }}
-          </li>
-        </ul>
-        <div class="mb-4">
-  <label>Rol:</label>
-  <select v-model="Rol_ID" class="border p-2 w-full" required>
-    <option value="">Seleccione un rol</option>
-    <option v-for="rol in roles" :key="rol.ID_Rol" :value="rol.ID_Rol">
-      {{ rol.Nombre }}
-    </option>
-  </select>
-</div>
-      </div>
-
-
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Asignar</button>
-    </form>
-
-    <div class="mt-6">
-      <h3 class="font-semibold">Asignaciones existentes:</h3>
-      <ul>
-        <li v-for="asignacion in asignaciones" :key="asignacion.ID_UserRolEscuela">
-          {{ asignacion.usuario?.firstName }} {{ asignacion.usuario?.lastName }}
+    <!-- Escuela -->
+    <div class="relative">
+      <label class="block mb-1 font-semibold text-gray-700">Buscar Institucion:</label>
+      <input
+        v-model="busquedaEscuela"
+        @input="buscarEscuelas"
+        class="border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        type="text"
+        autocomplete="off"
+        placeholder="Escribí el nombre de la escuela"
+      />
+      <ul
+        v-if="sugerencias.length"
+        class="absolute z-10 bg-white border border-gray-300 rounded-md mt-1 w-full shadow-lg"
+      >
+        <li
+          v-for="escuela in sugerencias"
+          :key="escuela.ID_Escuela"
+          @click="seleccionarEscuela(escuela)"
+          class="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+        >
+          {{ escuela.nombre }}
         </li>
       </ul>
     </div>
+
+    <!-- Rol -->
+    <div>
+      <label class="block mb-1 font-semibold text-gray-700">Rol:</label>
+      <select
+        v-model="Rol_ID"
+        class="border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      >
+        <option value="">Seleccione un rol</option>
+        <option v-for="rol in roles" :key="rol.ID_Rol" :value="rol.ID_Rol">
+          {{ rol.Nombre }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Botón -->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md transition duration-200"
+      >
+        Asignar
+      </button>
+    </div>
+  </form>
+
+  <!-- Asignaciones existentes -->
+  <div class="mt-8">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">Asignaciones existentes:</h3>
+    <ul class="list-disc list-inside text-gray-700">
+      <li
+        v-for="asignacion in asignaciones"
+        :key="asignacion.ID_UserRolEscuela"
+      >
+        {{ asignacion.usuario?.firstName }} {{ asignacion.usuario?.lastName }}
+      </li>
+    </ul>
   </div>
+</div>
+
  
 
 </template>
@@ -119,7 +147,7 @@ const asignar = async () => {
     await cargarAsignaciones()
   } catch (error) {
     console.error('Error al asignar usuario a escuela:', error)
-    alert('Error al asignar usuario a escuela')
+    
   }
 }
 

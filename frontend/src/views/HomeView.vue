@@ -14,13 +14,16 @@
     <div v-if="!login">
       <TheWelcome />
     </div>
-    <div v-else class="bg-gray-100 min-h-screen flex">
-      <Sidebar/>
+    <div v-else >
+      <div class="bg-gray-100 min-h-screen flex">
+        <Sidebar/>
       <MainInstitutionSubjects/>
+      </div>
+      <AsignarUsuarioEscuela/>
+     <FormularioRol :idUserRolEscuela="5" />
       
     </div>
-     <AsignarUsuarioEscuela/>
-     <FormularioRol :idUserRolEscuela="5" />
+     
 
   </main>
 </template>
