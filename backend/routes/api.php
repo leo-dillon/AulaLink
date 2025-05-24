@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\user\LoginController;
 use App\Http\Controllers\user\RegisterController;
+use App\Http\Controllers\user\EditController;
 use App\Http\Controllers\user\GetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstitucionController;
@@ -15,13 +16,15 @@ Route::post('/user/create', [RegisterController::class, 'store'])
 
 Route::post('/user/login', [LoginController::class, 'auth'])
     -> name('user.login');
-    
+
 Route::get('/user/{id}', [GetController::class, 'getUser'])
-    -> name('user.get');
+    -> name('user.id');
 
 Route::post('/user/logout', [LoginController::class, 'logout'])
     -> name('user.logout');
 
+Route::post('/user/edit/{id}', [EditController::class, 'editUser'])
+    -> name('user.edit');
 
 Route::get('/instituciones/buscar', [InstitucionController::class, 'lookFor']);
 // crea las instituciones

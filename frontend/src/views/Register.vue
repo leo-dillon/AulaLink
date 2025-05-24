@@ -1,59 +1,58 @@
-
 <script setup>
-import axios from 'axios'
-import { validateRegisterForm } from '@/utils/validationForms/validationRegisterForm'
-import { ref } from 'vue'
+  import axios from 'axios'
+  import { validateRegisterForm } from '@/utils/validationForms/validationRegisterForm'
+  import { ref } from 'vue'
 
-const form = ref({
-  firstName: '',
-  lastName: '',
-  gender: '',
-  birthdate: '',
-  dni: '',
-  email: '',
-  address: '',
-  phone: '',
-  password: '',
-  asset: true,
-  photo: null,
-})
+  const form = ref({
+    firstName: '',
+    lastName: '',
+    gender: '',
+    birthdate: '',
+    dni: '',
+    email: '',
+    address: '',
+    phone: '',
+    password: '',
+    asset: true,
+    photo: null,
+  })
 
-//                ----------------------------  TEST -------------------------
-// const form = ref({
-//   firstName: 'test_2',
-//   lastName: 'Test_2',
-//   gender: 'Masculino',
-//   birthdate: '1930-01-01',
-//   dni: '10000001',
-//   email: 'test_2@gmail.com',
-//   address: 'Una dirección valida de Test_1',
-//   phone: '2324000000',
-//   password: 'test_2',
-//   asset: true,
-//   photo: null,
-// })
+  //                ----------------------------  TEST -------------------------
+  // const form = ref({
+  //   firstName: 'test_2',
+  //   lastName: 'Test_2',
+  //   gender: 'Masculino',
+  //   birthdate: '1930-01-01',
+  //   dni: '10000001',
+  //   email: 'test_2@gmail.com',
+  //   address: 'Una dirección valida de Test_1',
+  //   phone: '2324000000',
+  //   password: 'test_2',
+  //   asset: true,
+  //   photo: null,
+  // })
 
-let errorMessage = ref('')
-let validateError = ref({})
+  let errorMessage = ref('')
+  let validateError = ref({})
 
-const handleRegister = async () => {
-  try {
-    const validateResult = validateRegisterForm(form.value)
-    validateError.value = validateResult  
+  const handleRegister = async () => {
+    try {
+      const validateResult = validateRegisterForm(form.value)
+      validateError.value = validateResult  
 
-    if((Object.keys(validateError.value).length === 0)){
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/create`, form.value)
-      if(response.status == 200){
-        location.href = "/"
+      if((Object.keys(validateError.value).length === 0)){
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/create`, form.value)
+        if(response.status == 200){
+          location.href = "/"
+        }
       }
+      // Aquí podés usar axios para enviar los datos al backend
+    } catch (error) {
+      errorMessage.value = 'Error al registrar el usuario.'
+      if(error.response?.data.errors.dni[0])     validateError.value.dni = 'El DNI ya esta registrado.'
+      if(error.response?.data.errors.email[0])   validateError.value.email = 'El email ya esta registrado.'
     }
-    // Aquí podés usar axios para enviar los datos al backend
-  } catch (error) {
-    errorMessage.value = 'Error al registrar el usuario.'
-    if(error.response?.data.errors.dni[0])     validateError.value.dni = 'El DNI ya esta registrado.'
-    if(error.response?.data.errors.email[0])   validateError.value.email = 'El email ya esta registrado.'
   }
-}
 </script>
 
 <template>

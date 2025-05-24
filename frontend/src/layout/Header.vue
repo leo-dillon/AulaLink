@@ -1,9 +1,9 @@
 <script setup>
     import { RouterLink } from 'vue-router';
-    const login = localStorage.getItem('token')
+    const login = localStorage.getItem('dataUser')
 
     const logout = async () => {
-        localStorage.clear('token')
+        localStorage.clear('dataUser')
         location.href = "/"
     }
 

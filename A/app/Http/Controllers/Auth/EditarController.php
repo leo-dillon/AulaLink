@@ -21,9 +21,8 @@ class EditarController  extends Controller
         'gender' => 'required',
         'birthdate' => 'required|date',
         'dni' => 'required|min:7',
-        'email' => 'required|email',
         'address' => 'required',
-        'foto' => 'nullable|image|max:2048',
+        'photo' => 'nullable|image|max:2048',
     ], [
         'name.required' => 'El nombre debe ser completado',
         'name.min' => 'El nombre debe tener más de 2 caracteres',
@@ -32,20 +31,17 @@ class EditarController  extends Controller
         'lastName.min' => 'El apellido debe tener más de 2 caracteres',
 
         'gender.required' => 'El género debe ser completado',
+
         'birthdate.required' => 'La fecha de nacimiento debe ser completada',
 
         'dni.required' => 'El DNI debe ser completado',
         'dni.min' => 'El DNI debe tener más de 6 caracteres',
-        
-
-        'email.required' => 'El Email debe ser completado',
-        'email.email' => 'El Email no es válido',
 
         'address.required' => 'La dirección debe ser completada',
     ]);
 
      // Buscar usuario existente
-     $user = User::findOrFail($id);
+    $user = User::findOrFail($id);
     
     $user->name = $request->name;
     $user->lastName = $request->lastName;
@@ -57,12 +53,12 @@ class EditarController  extends Controller
     $user->asset = true;
     $user->creationDate = now();
 
-    // Foto si existe
-    if ($request->hasFile('foto')) {
-         $ruta = $request->file('foto')->store('imagenes', 'public');
+    // photo si existe
+    if ($request->hasFile('photo')) {
+        $ruta = $request->file('photo')->store('imagenes', 'public');
         $user->photo = $ruta;
     }else {
-                $user->photo = null; 
+        $user->photo = null; 
 
     }
 

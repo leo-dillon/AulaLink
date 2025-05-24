@@ -29,6 +29,7 @@ class RegisterController extends Controller
             'lastName.min'       => 'El apellido debe tener más de 2 caracteres',
 
             'birthdate.required' => 'La fecha de nacimiento debe ser completada',
+            
             'gender.required'    => 'El género debe ser completado',
 
             'dni.required'       => 'El DNI debe ser completado',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\user\Controllers;
+namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -10,6 +10,17 @@ class GetController extends Controller
 {
     public function getUser(int $id){
         $user = User::findOrFail($id);
-        return response()->json($user);
+        $responseUser = [
+            "birthdate"     => $user -> birthdate,
+            "firstName"     => $user -> firstName,
+            "lastName"      => $user -> lastName,
+            "address"       => $user -> address,
+            "gender"        => $user -> gender,
+            "phone"         => $user -> phone,            
+            "photo"         => $user -> photo,
+            "dni"           => $user -> dni,
+        ];
+        return response()->json($responseUser);
+
     }
 }
