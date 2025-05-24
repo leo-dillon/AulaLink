@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('asset')->default(true);
             $table->string('photo')->nullable();
-            $table->unsignedBigInteger('userRole_id')->nullable();
             $table->timestamp('creationDate')->useCurrent();
             $table->timestamp('lastConnection')->nullable();
             $table->timestamps();

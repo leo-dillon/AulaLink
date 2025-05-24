@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UsuarioRolEscuela;
-
+use App\Models\Role;
 class UsuarioRolEscuelaController extends Controller
 {
     public function index()
@@ -37,5 +37,23 @@ class UsuarioRolEscuelaController extends Controller
     }
 }
 
+public function obtenerCamposDinamicos($idUserRolEscuela)
+{
+    $asignacion = UsuarioRolEscuela::with('rol')->findOrFail($idUserRolEscuela);
+
+    $definicion = $asignacion->rol->Definicion; // Esto es un JSON
+
+    $campos = [];
+
+    if ($definicion) {
+        $decoded = json_decode($definicion, true);
+        $campos = $decoded['campos'] ?? [];
+    }
+
+    return response()->json([
+        'rol' => $asignacion->rol->Nombre,
+        'campos' => $campos
+    ]);
+}
 }
 

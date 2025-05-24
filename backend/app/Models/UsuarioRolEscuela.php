@@ -30,7 +30,7 @@ class UsuarioRolEscuela extends Model
     }
     public function rol()
 {
-    return $this->belongsTo(\App\Models\Role::class, 'Rol_ID', 'ID_Rol');
+    return $this->belongsTo(Role::class, 'Rol_ID', 'ID_Rol');
 }
 }
 

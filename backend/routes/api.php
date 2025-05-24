@@ -7,6 +7,7 @@ use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\EditInstitucionController;
 use App\Http\Controllers\UsuarioRolEscuelaController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DatosRolController;
 
 Route::post('/user/create', [RegisterController::class, 'store'])
     -> name('user.create');
@@ -31,3 +32,10 @@ Route::put('/Editar/Institucion/{id}', [EditInstitucionController::class, 'updat
 Route::get('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'index']);
 Route::post('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'store']);
 Route::get('/roles', [RoleController::class, 'index']);
+
+//
+Route::get('/campos-dinamicos/{idUserRolEscuela}', [UsuarioRolEscuelaController::class, 'obtenerCamposDinamicos']);
+
+//
+Route::get('/campos-dinamicos/{idUserRolEscuela}', [DatosRolController::class, 'obtenerCampos']);
+Route::post('/datos-roles', [DatosRolController::class, 'store']);

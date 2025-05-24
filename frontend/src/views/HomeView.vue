@@ -3,7 +3,7 @@
   import MainInstitutionSubjects from '../components/InstitutionComponents/MainInstitutionSubjects.vue'
   import Sidebar from '../components/InstitutionComponents/SideBar.vue'
   import AsignarUsuarioEscuela from '../components/UsuarioConEscuela/AsignarUsuarioEscuela.vue'
-
+  import FormularioRol from '../components/UsuarioConEscuela/formularioRoles.vue'
   
   const login = localStorage.getItem('token')
 
@@ -20,6 +20,7 @@
       
     </div>
      <AsignarUsuarioEscuela/>
-    
+     <FormularioRol :idUserRolEscuela="5" />
+
   </main>
 </template>

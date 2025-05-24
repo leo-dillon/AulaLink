@@ -52,12 +52,13 @@
       </ul>
     </div>
   </div>
+ 
+
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-
 const Usuario_ID = ref('')
 const Escuela_ID = ref('')
 const busquedaEscuela = ref('')
@@ -72,7 +73,7 @@ const buscarEscuelas = async () => {
   }
 
   try {
-    const res = await axios.get(`http://localhost:8000/api/instituciones/buscar?nombre=${busquedaEscuela.value}`)
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/instituciones/buscar?nombre=${busquedaEscuela.value}`)
     sugerencias.value = res.data
   } catch (error) {
     sugerencias.value = []
@@ -87,7 +88,7 @@ const seleccionarEscuela = (escuela) => {
 
 const cargarAsignaciones = async () => {
   try {
-    const res = await axios.get('http://localhost:8000/api/usuario-rol-escuela')
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/usuario-rol-escuela`)
     
     
     asignaciones.value = res.data
@@ -97,7 +98,7 @@ const cargarAsignaciones = async () => {
 }
 const cargarRoles = async () => {
   try {
-    const res = await axios.get('http://localhost:8000/api/roles')
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/roles`)
     roles.value = res.data
   } catch (error) {
     console.error('Error al cargar roles', error)
@@ -105,7 +106,7 @@ const cargarRoles = async () => {
 }
 const asignar = async () => {
   try {
-    await axios.post('http://localhost:8000/api/usuario-rol-escuela', {
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/usuario-rol-escuela`, {
       Usuario_ID: parseInt(Usuario_ID.value),
       Escuela_ID: parseInt(Escuela_ID.value),
       Rol_ID: parseInt(Rol_ID.value)
