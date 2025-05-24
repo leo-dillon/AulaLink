@@ -1,20 +1,33 @@
 <script setup>
   import TheWelcome from '../components/TheWelcome.vue'
-  import MainInstitutionSubjects from '../components/InstitutionComponents/MainInstitutionSubjects.vue'
   import Sidebar from '../components/InstitutionComponents/SideBar.vue'
+  import { onMounted, provide } from 'vue'
+  import { RouterView } from 'vue-router'
+  import axios from 'axios'
   
-  const login = localStorage.getItem('token')
+  const userData = JSON.parse(localStorage.getItem('dataUser'))  
+
+  // Esto hace que se compartan los datos de padres a Hijos
+  provide('userData', userData)
+
+  onMounted( () => {
+      window.addEventListener('hashchange', () => {
+      const resUser = axios.get(``) 
+      resUser
+    })
+  })
 
 </script>
 
 <template>
   <main>
-    <div v-if="!login">
+    <div v-if="!userData">
       <TheWelcome />
     </div>
-    <div v-else class="bg-gray-100 min-h-screen flex">
-      <Sidebar/>
-      <MainInstitutionSubjects/>
+    <div v-else class="bg-gray-100 flex">
+      <Sidebar  />
+      <!-- Router view => Modificación de página sin recargar -->
+      <RouterView />
     </div>
     
   </main>

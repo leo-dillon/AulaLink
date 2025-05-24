@@ -35,6 +35,7 @@ const Shool = reactive(
 onMounted(async () => {
   try {
     const res = await axios.get(`http://127.0.0.1:8000/api/Editar/Institucion/${id_institution}`);
+    console.log('ACA LEO', res)
     Object.assign(Shool, res.data);
   } catch (error) {
     console.error("Error al cargar institución", error);

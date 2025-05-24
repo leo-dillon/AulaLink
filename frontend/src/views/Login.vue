@@ -9,17 +9,18 @@
     const errorMessage = ref('')
 
     const handleLogin = async () => {
-    try {
-        const response = await axios.post('http://localhost:8000/api/user/login', data.value)
-        // Guardando JWT
-        localStorage.setItem('token', response.data.jwt)
-        errorMessage.value = ''
-        console.log(response.status)
-        location.href = '/'
+        try {
+            const response = await axios.post('http://localhost:8000/api/user/login', data.value)
+            // Guardando JWT
+            localStorage.setItem('dataUser', JSON.stringify(response.data.datosUser))
+            response.data.datosUser
+            errorMessage.value = ''
+            location.href = '/'
 
-    } catch (error) {
-        errorMessage.value = 'Correo o contraseña incorrectos.'
-    }
+        } catch (error) {
+            console.log(error)
+            errorMessage.value = 'Correo o contraseña incorrectos.'
+        }
     }
 </script>
 
