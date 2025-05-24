@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, inject } from 'vue'
 import axios from 'axios'
 const Usuario_ID = ref('')
 const Escuela_ID = ref('')
@@ -94,6 +94,9 @@ const sugerencias = ref([])
 const asignaciones = ref([])
 const Rol_ID = ref('')
 const roles = ref([])
+
+const ejemplo = inject('userData')
+
 const buscarEscuelas = async () => {
   if (busquedaEscuela.value.length < 2) {
     sugerencias.value = []
