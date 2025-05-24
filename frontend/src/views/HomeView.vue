@@ -1,9 +1,11 @@
 <script setup>
   import TheWelcome from '../components/TheWelcome.vue'
   import Sidebar from '../components/InstitutionComponents/SideBar.vue'
+
   import { onMounted, provide } from 'vue'
   import { RouterView } from 'vue-router'
   import axios from 'axios'
+
   
   const userData = JSON.parse(localStorage.getItem('dataUser'))  
 
@@ -29,6 +31,7 @@
       <!-- Router view => Modificación de página sin recargar -->
       <RouterView />
     </div>
-    
+     
+
   </main>
 </template>

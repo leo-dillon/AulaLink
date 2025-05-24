@@ -7,6 +7,15 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class InstitucionController extends Controller
 {
+     public function lookFor (Request $request){
+      $nombre = $request->query('nombre');
+    
+    return Institucion::where('nombre', 'like', "%$nombre%")
+                      ->select('ID_Escuela', 'nombre')
+                      ->limit(5)
+                      ->get();
+
+     }
     public function store(Request $request)
     {
          $request->validate([

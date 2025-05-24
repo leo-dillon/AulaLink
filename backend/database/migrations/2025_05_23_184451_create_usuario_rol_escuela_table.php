@@ -18,10 +18,12 @@ return new class extends Migration
             $table->unsignedBigInteger('Rol_ID');
             $table->timestamps();
             
+            
     // clave foranea
     $table->foreign('Usuario_ID')->references('ID_Usuario')->on('users')->onDelete('cascade');
     $table->foreign('Escuela_ID')->references('ID_Escuela')->on('schools')->onDelete('cascade');
     $table->foreign('Rol_ID')->references('ID_Rol')->on('roles')->onDelete('cascade');
+     $table->unique(['Usuario_ID', 'Escuela_ID', 'Rol_ID']);
         });
     }
 

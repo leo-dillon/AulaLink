@@ -30,6 +30,20 @@ class SchoolsSeeder extends Seeder
                     'created_at' => now(),
                 'updated_at' => now(),
                 ],
+                [
+                    'Nombre'=> 'Monse',
+                    'CUE'=> '26594',
+                    'Direccion'=>'25 de Mayo 53',
+                    'Localidad'=>'Lincoln',
+                    'Provincia'=>'Buenos Aires',
+                    'Telefonos'=>'2355550544',
+                    'Emails'=>'Monse@Notre.com',
+                    'Nivel' =>'Secundario',
+                    'Tipo'=>'subvencionada',
+                    'Usuario_ADM'=>'1',
+                    'created_at' => now(),
+                'updated_at' => now(),
+                ],
 
             ]
         );

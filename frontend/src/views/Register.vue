@@ -41,9 +41,8 @@ const handleRegister = async () => {
     const validateResult = validateRegisterForm(form.value)
     validateError.value = validateResult  
 
-    if(!(Object.keys(validateError.value).length === 0)){
-    }else{
-      const response = await axios.post('http://localhost:8000/api/user/create', form.value)
+    if((Object.keys(validateError.value).length === 0)){
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/create`, form.value)
       if(response.status == 200){
         location.href = "/"
       }
