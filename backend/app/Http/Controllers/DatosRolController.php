@@ -6,34 +6,34 @@ use Illuminate\Http\Request;
 use App\Models\DatosRol;
 use App\Models\UsuarioRolEscuela;
 use App\Models\Role;
-
+use Illuminate\Support\Facades\DB;
 class DatosRolController extends Controller
 {
     // Obtener los campos definidos para el rol asociado a un usuario
-   public function obtenerCampos($idUserRolEscuela)
+   public function obtenerCampos($idUsuario)
 {
-    // Buscamos el registro en usuario_rol_escuela
-    $usuarioRol = UsuarioRolEscuela::find($idUserRolEscuela);
+    $usuarioRol = DB::table('usuario_rol_escuela')
+        ->where('Usuario_ID', $idUsuario)
+        ->first();
 
     if (!$usuarioRol) {
-        return response()->json(['error' => 'UsuarioRolEscuela no encontrado'], 404);
+        return response()->json(['error' => 'Usuario sin rol asignado'], 404);
     }
 
-    // Obtenemos el ID_Rol
-    $rol = Role::find($usuarioRol->Rol_ID);
+    $rol = DB::table('roles')->where('ID_Rol', $usuarioRol->ID_Rol)->first();
 
     if (!$rol) {
         return response()->json(['error' => 'Rol no encontrado'], 404);
     }
 
-    $definicion = json_decode($rol->Definicion, true);
-    $campos = $definicion['campos'] ?? [];
+    $campos = json_decode($rol->Definicion)->campos ?? [];
 
     return response()->json([
         'rol' => $rol->Nombre,
         'campos' => $campos
     ]);
 }
+
 
 
     // Guardar los datos rellenados por el usuario para ese rol
