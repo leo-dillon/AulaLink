@@ -40,9 +40,6 @@ Route::get('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'index']
 Route::post('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'store']);
 Route::get('/roles', [RoleController::class, 'index']);
 
-//
-Route::get('/campos-dinamicos/{idUserRolEscuela}', [UsuarioRolEscuelaController::class, 'obtenerCamposDinamicos']);
 
-//
 Route::get('/campos-dinamicos/{idUsuario}', [DatosRolController::class, 'obtenerCampos']);
 Route::post('/datos-roles', [DatosRolController::class, 'store']);

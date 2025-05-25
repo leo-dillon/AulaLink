@@ -44,23 +44,6 @@ $yaExiste = UsuarioRolEscuela::where('Usuario_ID', $request->Usuario_ID)
     }
 }
 
-public function obtenerCamposDinamicos($idUserRolEscuela)
-{
-    $asignacion = UsuarioRolEscuela::with('rol')->findOrFail($idUserRolEscuela);
 
-    $definicion = $asignacion->rol->Definicion; // Esto es un JSON
-
-    $campos = [];
-
-    if ($definicion) {
-        $decoded = json_decode($definicion, true);
-        $campos = $decoded['campos'] ?? [];
-    }
-
-    return response()->json([
-        'rol' => $asignacion->rol->Nombre,
-        'campos' => $campos
-    ]);
-}
 }
 

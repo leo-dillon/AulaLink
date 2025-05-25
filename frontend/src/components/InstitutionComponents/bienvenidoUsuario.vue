@@ -15,7 +15,7 @@ import { inject} from 'vue';
         </h2>
         <AsignarUsuarioEscuela/>    
                          <!-- Hacer que use (userName) y funcione con el id de usuario y no con el id de la tabla -->
-        <FormularioRoles :idUsuario="6" />
+        <FormularioRoles :idUsuario="userName" />
         <RouterLink to="/editar">
             Editar Usuario 
         </RouterLink>

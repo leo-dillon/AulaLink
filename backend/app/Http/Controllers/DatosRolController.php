@@ -13,10 +13,11 @@ class DatosRolController extends Controller
     // Obtener los campos definidos para el rol asociado a un usuario
   public function obtenerCampos($idUsuario)
 {
+    
     // Buscar el último registro por Usuario_ID
     $usuarioRol = DB::table('usuario_rol_escuela')
         ->where('Usuario_ID', $idUsuario)
-        ->orderByDesc('ID_UserRolEscuela') // o por created_at si tenés timestamps válidos
+        
         ->first();
 
     if (!$usuarioRol) {
