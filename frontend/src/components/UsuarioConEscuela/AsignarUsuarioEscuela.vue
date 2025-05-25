@@ -4,7 +4,7 @@
 
   <form @submit.prevent="asignar" class="space-y-5">
     <!-- Usuario -->
-    <div>
+    <!-- <div>
       <label class="block mb-1 font-semibold text-gray-700">Usuario ID:</label>
       <input
         v-model="Usuario_ID"
@@ -12,7 +12,7 @@
         type="number"
         required
       />
-    </div>
+    </div> -->
 
     <!-- Escuela -->
     <div class="relative">
@@ -86,6 +86,8 @@
 
 <script setup>
 import { ref, onMounted, inject } from 'vue'
+const userData = inject('userData')
+const userName = userData?.id;
 import axios from 'axios'
 const Usuario_ID = ref('')
 const Escuela_ID = ref('')
@@ -94,6 +96,7 @@ const sugerencias = ref([])
 const asignaciones = ref([])
 const Rol_ID = ref('')
 const roles = ref([])
+
 
 const ejemplo = inject('userData')
 
@@ -138,7 +141,7 @@ const cargarRoles = async () => {
 const asignar = async () => {
   try {
     await axios.post(`${import.meta.env.VITE_API_URL}/api/usuario-rol-escuela`, {
-      Usuario_ID: parseInt(Usuario_ID.value),
+      Usuario_ID: userName,
       Escuela_ID: parseInt(Escuela_ID.value),
       Rol_ID: parseInt(Rol_ID.value)
     })
