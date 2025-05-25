@@ -56,8 +56,10 @@
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class=" mt-20 min-h-screen flex items-center justify-center bg-gray-100">
     <div class="bg-white shadow-md rounded-xl w-full max-w-2xl p-8">
+                      <img src="/img/logoAulaLink2.png" alt="Logo AulaLink" class=" mx-auto"> 
+
       <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Registro de Usuario</h2>
       <form @submit.prevent="handleRegister" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>

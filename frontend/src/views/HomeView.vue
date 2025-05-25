@@ -23,10 +23,10 @@
 
 <template>
   <main>
-    <div v-if="!userData">
+    <div  v-if="!userData" class="mt-20">
       <TheWelcome />
     </div>
-    <div v-else class="bg-gray-100 flex">
+    <div v-else class="bg-gray-100 flex mt-20">
       <Sidebar  />
       <!-- Router view => Modificación de página sin recargar -->
       <RouterView />

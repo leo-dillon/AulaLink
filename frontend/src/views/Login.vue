@@ -25,9 +25,11 @@
 </script>
 
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class=" mt-20 min-h-screen flex items-center justify-center bg-gray-100">
+        
         <div class="bg-white shadow-md rounded-xl w-full max-w-md p-8">
-            <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Iniciar sesión</h2>
+                <img src="/img/logoAulaLink2.png" alt="Logo AulaLink" class=" mx-auto"> 
+ <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Iniciar sesión</h2>
             
             <form @submit.prevent="handleLogin" class="space-y-5">
                 <div>
