@@ -88,6 +88,8 @@ export default {
 
     guardarDatosRol() {
         const datosPlano = JSON.parse(JSON.stringify(this.datosFormulario));
+console.log('Datos enviados:', datosPlano);
+console.log('usuario:', this.idUsuario);
 
       axios.post(`${import.meta.env.VITE_API_URL}/api/datos-roles`, {
         ID_UserRolEscuela: this.idUsuario,

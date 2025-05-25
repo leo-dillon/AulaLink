@@ -26,7 +26,8 @@ const router = createRouter({
         {
           path: 'editar',
           name: 'editarUsuario',
-          component: () => import('../components/InstitutionComponents/EditarUsuario.vue') 
+          component: () => import('../components/InstitutionComponents/EditarUsuario.vue')
+
         }
       ]
     },
