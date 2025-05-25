@@ -59,6 +59,9 @@ const router = createRouter({
       component: () => import('../views/EditSchools.vue')
     }, 
   ],
+  scrollBehavior() {
+    return { top: 0 }; // sube hacia arriba al navegar
+  },
 })
 
 export default router

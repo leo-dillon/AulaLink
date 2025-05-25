@@ -34,18 +34,12 @@
        
         <div class="flex gap-1 items-center">
           <li class="bg-[#003554] hover:bg-[#005072] text-white font-bold text-lg py-2 px-3 rounded-lg transition-colors duration-200">
-          <RouterLink 
-            to="/iniciar-sesion"
-            
-          >
+          <RouterLink to="/iniciar-sesion">
             Iniciar sesión
           </RouterLink>
         </li>
         <li class="bg-amber-400 hover:bg-amber-500 text-white font-bold text-lg py-2 px-3 rounded-lg transition-colors duration-200">
-          <RouterLink 
-            to="/registrarse"
-            
-          >
+          <RouterLink to="/registrarse" >
             Registrarse
           </RouterLink>
         </li>

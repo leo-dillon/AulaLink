@@ -23,7 +23,7 @@
   <!-- ¿Qué es Aulalink? -->
   <section class="px-6  flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto">
     <div class="md:w-1/2">
-      <img src="/img/img_2_OnePage.png" alt="¿Qué es AulaLink?" class="w-full max-w-sm mx-auto">
+      <img src="/img/img_2_OnePage.png" alt="¿Qué es AulaLink?" class="w-full max-w-lg mx-auto">
     </div>
     <div class="md:w-1/2 text-center md:text-left">
       <h2 class="text-3xl font-bold mb-4">¿Qué es AulaLink?</h2>
