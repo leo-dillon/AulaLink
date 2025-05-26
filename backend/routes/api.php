@@ -10,6 +10,7 @@ use App\Http\Controllers\EditInstitucionController;
 use App\Http\Controllers\UsuarioRolEscuelaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DatosRolController;
+use App\Http\Controllers\PagoController;
 
 Route::post('/user/create', [RegisterController::class, 'store'])
     -> name('user.create');
@@ -33,6 +34,8 @@ Route::post('/CreateInstituciones', [InstitucionController::class, 'store']);
 Route::get('/Editar/Institucion/{id}', [EditInstitucionController::class, 'edit']);
 // envia la edicion
 Route::put('/Editar/Institucion/{id}', [EditInstitucionController::class, 'update']);
+
+Route::post('/pago', [PagoController::class, 'store']);
 
 
 //

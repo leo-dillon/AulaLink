@@ -59,6 +59,12 @@ const router = createRouter({
       name: 'editar_escuela',
       component: () => import('../views/EditSchools.vue')
     }, 
+    // RUTA PARA EL FORMULARIO DE PAGO
+    {
+      path: '/pago',
+      name: 'pago',
+      component: () => import('../views/PaymentView.vue')
+    }
   ],
   scrollBehavior() {
     return { top: 0 }; // sube hacia arriba al navegar
