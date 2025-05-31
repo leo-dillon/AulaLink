@@ -27,7 +27,7 @@
         const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/edit/${userData.id}`, form)
         console.log(response)
         if(response.status == 200){
-          // location.reload()
+          location.reload()
         }
       }
     } catch (error) {

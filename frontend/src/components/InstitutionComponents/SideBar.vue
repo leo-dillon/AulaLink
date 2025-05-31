@@ -1,32 +1,38 @@
 <script setup>
-import axios from 'axios'
-import {reactive, onMounted, inject} from 'vue';
-import { RouterLink } from 'vue-router';
-const Shool = reactive({
-  Nombre:"",
-  CUE:"",
-  Direccion:"",
-  Localidad:"",
-  Provincia:"",
-  Telefonos:"",
-  Emails:"",
-  Nivel:"",
-  Tipo:"",
-  // Usuario_ADM:"1",
-})
-    //const id = route.params.id; // El ID viene desde la URL
-const id_institution = 1; // ⬆⬆El ID viene desde la URL
-const userData = inject('userData')
-const userName = userData.firstName + ' ' + userData.lastName
+// defineProps({
+//     'userSchool': escuela
+//   })
+//   console.log(userSchool) 
 
-onMounted(async () => {
-  try {
-    const res = await axios.get(`http://127.0.0.1:8000/api/Editar/Institucion/${id_institution}`);
-    Object.assign(Shool, res.data);
-  } catch (error) {
-    console.error("Error al cargar institución", error);
-  }
-});
+  import axios from 'axios'
+  import {reactive, onMounted, inject} from 'vue';
+  import { RouterLink } from 'vue-router';
+
+  const Shool = reactive({
+    Nombre:"",
+    CUE:"",
+    Direccion:"",
+    Localidad:"",
+    Provincia:"",
+    Telefonos:"",
+    Emails:"",
+    Nivel:"",
+    Tipo:"",
+    // Usuario_ADM:"1",
+  })
+      //const id = route.params.id; // El ID viene desde la URL
+  const id_institution = 1; // ⬆⬆El ID viene desde la URL
+  const userData = inject('userData')
+  const userName = userData.firstName + ' ' + userData.lastName
+
+  onMounted(async () => {
+    try {
+      const res = await axios.get(`http://127.0.0.1:8000/api/Editar/Institucion/${id_institution}`);
+      Object.assign(Shool, res.data);
+    } catch (error) {
+      console.error("Error al cargar institución", error);
+    }
+  });
 </script>
 
 <template>

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class GetController extends Controller
+class GetByIdController extends Controller
 {
     public function getUser(int $id){
         $user = User::findOrFail($id);

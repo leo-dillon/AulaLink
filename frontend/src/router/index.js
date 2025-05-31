@@ -6,25 +6,30 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      component: () => import('../views/unlogued/HomeView.vue'),
       children: [
         {
           path: '',
+          name: 'Bienvenido',
+          component: () => import('../components/TheWelcome.vue')
+        },
+        {
+          path: 'user',
           name: 'bienvenidoUsuario',
           component: () => import('../components/InstitutionComponents/bienvenidoUsuario.vue')
         },
         {
-          path: 'escuela',
+          path: 'user/escuela',
           name: 'escuelaUsuario',
           component: () => import('../components/InstitutionComponents/MainInstitutionSubjects.vue')
         },
         {
-          path: 'calendario',
+          path: 'user/calendario',
           name: 'calendarioUsuario',
           component: () => import('../components/InstitutionComponents/CalendarioUsuario.vue') 
         },
         {
-          path: 'editar',
+          path: 'user/editar',
           name: 'editarUsuario',
           component: () => import('../components/InstitutionComponents/EditarUsuario.vue')
 
@@ -32,38 +37,38 @@ const router = createRouter({
       ]
     },
     {
-      path: '/about',
+      path: '/sobreNosotros',
       name: 'about',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/unlogued/AboutView.vue'),
     },
     {
       path: '/iniciar-sesion',
       name: 'iniciar-sesion',
-      component: () => import('../views/Login.vue')
+      component: () => import('../views/unlogued/Login.vue')
     },
     {
       path: '/registrarse',
       name: 'registrarse',
-      component: () => import('../views/Register.vue')
+      component: () => import('../views/unlogued/Register.vue')
     },
     {
       path: '/crear_escuela',
       name: 'crear_escuela',
-      component: () => import('../views/CreateSchools.vue')
+      component: () => import('../views/logued/CreateSchools.vue')
     },
     {
       path: '/editar_escuela/:id',
       name: 'editar_escuela',
-      component: () => import('../views/EditSchools.vue')
+      component: () => import('../views/logued/EditSchools.vue')
     }, 
     // RUTA PARA EL FORMULARIO DE PAGO
     {
       path: '/pago',
       name: 'pago',
-      component: () => import('../views/PaymentView.vue')
+      component: () => import('../views/logued/PaymentView.vue')
     }
   ],
   scrollBehavior() {

@@ -1,7 +1,7 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
+import pluginVue, { rules } from 'eslint-plugin-vue'
 import pluginOxlint from 'eslint-plugin-oxlint'
 
 export default defineConfig([
@@ -18,6 +18,11 @@ export default defineConfig([
         ...globals.browser,
       },
     },
+  },
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off'
+    }
   },
 
   js.configs.recommended,
