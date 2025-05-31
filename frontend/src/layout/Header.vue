@@ -9,7 +9,7 @@
     const links = [
         { text: 'Inicio',           to: '/'               },
         { text: 'Sobre Nosotros',   to: '/sobreNosotros' },
-        { text: 'Contacto',         to: '/iniciar-sesion' },
+        { text: 'Contacto',         to: '/contacto' },
         { text: 'Ingresar',         to: '/iniciar-sesion' }
     ]
     const logout = async () => {

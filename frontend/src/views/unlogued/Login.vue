@@ -15,7 +15,7 @@
             localStorage.setItem('dataUser', JSON.stringify(response.data.datosUser))
             response.data.datosUser
             errorMessage.value = ''
-            location.href = '/'
+            location.href = '/user'
 
         } catch (error) {
             console.log(error)
@@ -25,10 +25,10 @@
 </script>
 
 <template>
-    <div class="pt-12 flex items-center justify-center bg-gray-100">
-        <div class="bg-amber-50 shadow-md rounded-xl w-full max-w-md p-8">
+    <div class="py-12 flex items-center justify-center bg-gray-100">
+        <div class="bg-blue-100 shadow-xl/50 rounded-xl w-full max-w-md p-8">
             <img src="/img/logo/logoAulaLink2.png" alt="Logo AulaLink" class=" mx-auto"> 
-            <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Iniciar sesión</h2>
+            <h2 class="text-4xl font-semibold text-center mb-6 text-gray-800">Iniciar sesión</h2>
             <form @submit.prevent="handleLogin" class="space-y-5">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>

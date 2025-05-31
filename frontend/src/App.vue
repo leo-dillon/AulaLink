@@ -5,7 +5,7 @@
 
 <template>
     <Header />
-    <div class="py-24 bg-gray-100">
+    <div class="pt-24 bg-gray-100">
         <RouterView />
     </div>
     <Footer />

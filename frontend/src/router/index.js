@@ -55,6 +55,11 @@ const router = createRouter({
       component: () => import('../views/unlogued/Register.vue')
     },
     {
+      path: '/contacto',
+      name: 'contacto',
+      component: () => import('../views/unlogued/Contact.vue')
+    },
+    {
       path: '/crear_escuela',
       name: 'crear_escuela',
       component: () => import('../views/logued/CreateSchools.vue')

@@ -19,7 +19,7 @@
         <section class="w-full max-w-[1350px] mx-auto flex flex-col items-center">
             <div class="w-full mt-12 flex items-center justify-around text-center">
                 <div class="relative md:w-1/2">
-                    <img src="/img/img_2_OnePage.png" alt="¿Qué es AulaLink?" class="w-full max-w-150 drop-shadow-xl/40 drop-shadow-blue-900 hover:drop-shadow-xl/70 duration-300">
+                    <img src="/img/img_2_OnePage.png" alt="¿Qué es Aula Link?" class="w-full max-w-150 drop-shadow-xl/40 drop-shadow-blue-900 hover:drop-shadow-xl/70 duration-300">
                 </div>
                 <div class="">
                     <h2 class="text-5xl text-gray-800 text-start font-bold mb-12">¿Qué es <span class="border-b-6 border-amber-400">Aula Link</span>?</h2>
@@ -33,7 +33,7 @@
         <section class="w-full mt-24 py-12 flex flex-col items-center bg-amber-100">
             <div class="w-full flex flex-col gap-16 max-w-6xl">
                 <h2 class="text-5xl text-gray-800 text-center font-bold mb-12">
-                    Los beneficios de usar <span class="border-b-6 border-amber-400">AulaLink</span>
+                    Los beneficios de usar <span class="border-b-6 border-amber-400">Aula Link</span>
                 </h2>
 
                 <div class="flex justify-between">
