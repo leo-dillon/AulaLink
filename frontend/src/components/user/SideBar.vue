@@ -36,9 +36,9 @@
 </script>
 
 <template>
-  <div class="bg-gray-100 min-h-screen flex">
+  <div class="min-h-160 h-auto bg-gray-100 flex">
    <!-- Sidebar -->
-  <aside class="w-64 bg-white shadow-md">
+  <aside class="w-64 h-auto bg-white shadow-md">
     <div class="p-4">
       <h1 class="text-xl font-bold flex items-center gap-2">
         <img :src="`https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&size=40&background=0D8ABC&color=fff`" class="w-6 h-6 rounded-lg" alt="">
@@ -65,7 +65,7 @@
         Escuela
       </RouterLink>
       
-      <RouterLink to="/user/editar_escuela/${id_institution}" class="flex items-center gap-3 rounded hover:bg-gray-100 p-4">
+      <RouterLink to="/user/editarUsuario" class="flex items-center gap-3 rounded hover:bg-gray-100 p-4">
         <span class="material-icons">settings</span> Ajustes
       </RouterLink>
 

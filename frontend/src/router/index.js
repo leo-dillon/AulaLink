@@ -35,7 +35,7 @@ const router = createRouter({
           meta: { requiresAuth: true }
         },
         {
-          path: 'editar',
+          path: 'editarUsuario',
           name: 'editarUsuario',
           component: () => import('../components/user/EditarUsuario.vue'),
           meta: { requiresAuth: true }
