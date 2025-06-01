@@ -31,7 +31,8 @@
                         <RouterLink 
                         to="#" 
                         @click="logout" 
-                        class="text-gray-700 hover:text-red-600 transition"
+                        class="flex items-center disabled px-2 lg:px-4 py-2 text-black text-md lg:text-lg border rounded-2xl border-red-500 font-semibold opacity-70 hover:opacity-100 hover:bg-red-400/50 transition"
+                        title="Cerrar sesión"
                         >
                         Cerrar sesión
                     </RouterLink>
