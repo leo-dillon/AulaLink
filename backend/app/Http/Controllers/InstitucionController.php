@@ -32,23 +32,24 @@ class InstitucionController extends Controller
         ]);
 
         $Institucion = new Institucion();
-        $Institucion -> Nombre      = $request -> Nombre;
-        $Institucion -> CUE       = $request -> CUE;
-        $Institucion -> Direccion         = $request -> Direccion;
-        $Institucion -> Localidad      = $request -> Localidad;
-        $Institucion -> Provincia            = $request -> Provincia;
-        $Institucion -> Telefonos          = $request -> Telefonos;
-        $Institucion -> Emails        = $request -> Emails;
-        $Institucion -> Nivel          = $request -> Nivel;
-        $Institucion -> Tipo          = $request -> Tipo;
+        $Institucion -> Nombre          = $request -> Nombre;
+        $Institucion -> CUE             = $request -> CUE;
+        $Institucion -> Direccion       = $request -> Direccion;
+        $Institucion -> Localidad       = $request -> Localidad;
+        $Institucion -> Provincia       = $request -> Provincia;
+        $Institucion -> Telefonos       = $request -> Telefonos;
+        $Institucion -> Emails          = $request -> Emails;
+        $Institucion -> Nivel           = $request -> Nivel;
+        $Institucion -> Tipo            = $request -> Tipo;
+        $Institucion -> Usuario_ADM     = $request -> Usuario_ADM;
         $Institucion -> save();
 
-        // return response() -> json([
-        //     'message' => 'El usuario fue registrado',
-        //     'request' => $Institucion
-        // ]);
+        return response() -> json([
+            'message' => 'El usuario fue registrado',
+            'request' => $Institucion
+        ]);
 
         
-        return response()->json(['message' => 'Institución creada', 'institucion' => $Institucion], 201);
+        return response()->json($request, 201);
     }
 }

@@ -1,46 +1,45 @@
 <script setup>
-import {reactive,ref} from 'vue';
-import axios from 'axios'
-import { validateInstitutionForm } from '@/utils/validationForms/validationSchoolsForm '
-                                         
+    import {reactive,ref} from 'vue';
+    import axios from 'axios'
+    import { validateInstitutionForm } from '@/utils/validationForms/validationSchoolsForm '
+                                            
+    let userData = JSON.parse(localStorage.getItem('dataUser'))
 
-const Shool = reactive(
-    {
-      Nombre:"",
-      CUE:"",
-      Direccion:"",
-      Localidad:"",
-      Provincia:"",
-      Telefonos:"",
-      Emails:"",
-      Nivel:"",
-      Tipo:"",
-      Usuario_ADM:"1",
+    const Shool = reactive({
+        Nombre:"",
+        CUE:"",
+        Direccion:"",
+        Localidad:"",
+        Provincia:"",
+        Telefonos:"",
+        Emails:"",
+        Nivel:"",
+        Tipo:"",
+        Usuario_ADM: userData.id || '',
     })
-
     const errorMessage = ref('')
     let validateError = ref({})
+    
     const handleSubmit = async () =>{
-  try {
-   
-    const validateResult = validateInstitutionForm(Shool)
-    validateError.value = validateResult  
-   
-    // ⚠️ Si hay errores, detenemos la ejecución
-    if (Object.keys(validateResult).length > 0) {
-      return
+        try {
+            const validateResult = validateInstitutionForm(Shool)
+            validateError.value = validateResult  
+            // ⚠️ Si hay errores, detenemos la ejecución
+            if (Object.keys(validateResult).length > 0) {
+                return
+            }
+                // Envía POST a Laravel 
+            Shool.Usuario_ADM = userData.id
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/CreateInstituciones`, Shool)
+            console.log(res)
+            alert('Institución creada con éxito')
+            // limpiar formulario
+            Object.keys(Shool).forEach(key => Shool[key] = '')
+        } catch (error) {
+            errorMessage.value = 'Error al registrar el usuario.'
+            console.error(error)
+        }
     }
-    // Envía POST a Laravel 
-await axios.post(`${import.meta.env.VITE_API_URL}/api/CreateInstituciones`, Shool)
-  
-    alert('Institución creada con éxito')
-    // limpiar formulario
-     Object.keys(Shool).forEach(key => Shool[key] = '')
-  } catch (error) {
-    errorMessage.value = 'Error al registrar el usuario.'
-    console.error(error)
-  }
-}
 </script>
 
 <template>
@@ -144,15 +143,8 @@ await axios.post(`${import.meta.env.VITE_API_URL}/api/CreateInstituciones`, Shoo
      <small v-if="validateError.Tipo" class="text-red-500">
             {{ (validateError.Tipo) }}
           </small>
-  </div>
-
-  <!-- Usuario_ADM -->
-  <!-- <div>
-    <label for="Usuario_ADM" class="block text-sm font-medium text-gray-700">Usuario ADM</label>
-    <input  type="text" id="Usuario_ADM" name="Usuario_ADM" value="" class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
-  </div> -->
-                    
-
+  </div>       
+  <input class="hidden" type="number" name="Usuario_ADM" :value="userData.id">
                     </div>
 
                 <div>

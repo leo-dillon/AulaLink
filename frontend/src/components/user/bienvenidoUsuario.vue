@@ -1,29 +1,17 @@
 <script setup>
     import axios from 'axios';
-        import { inject, onMounted, ref } from 'vue';
+    import { inject, onMounted, ref, watchEffect } from 'vue';
     import { RouterLink } from 'vue-router';
     
     const userData = inject('userData')
-    let form = ref({
-        firstName: '',
-        lastName: '',
-        gender: '',
-        birthdate: '',
-        dni: '',
-        address: '',
-        phone: '',
-        photo: null,
-    })
+    const userSchool = inject('user_school')
 
-    onMounted( async () => {
-        try{
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/${userData.id}`)
-            form.value = res.data
-            console.log(form.value)
-        }catch(error){
-            console.log(error)
+    watchEffect(() => {
+        if (userSchool?.value) {
+            console.log('La escuela llegó:', userSchool.data)
         }
     })
+
 </script>
 
 
@@ -56,11 +44,20 @@
 
         <!-- Sección Escuelas -->
         <section class="bg-blue-100 p-6 rounded-2xl shadow-lg hover:shadow-xl/30 transition">
-            <h3 class="text-xl font-semibold text-gray-800">Escuelas</h3>
-            <p class="mt-2 text-gray-700">Revisá las instituciones y materias asociadas.</p>
-            <RouterLink to="/user/escuela" class="inline-block mt-3 text-gray-900 underline hover:text-gray-700">
-                Ver escuelas
-            </RouterLink>
+            <div v-if="userSchool == undefined" class="flex justify-center items-center">
+                <p> Cargando datos </p>
+            </div>
+            <div v-else-if="userSchool.data !== ''">
+                <h3 class="text-xl font-semibold text-gray-800">Escuelas</h3>
+                <p class="mt-2 text-gray-700">Revisá las instituciones y materias asociadas.</p>
+                <RouterLink to="/user/escuela" class="inline-block mt-3 text-gray-900 underline hover:text-gray-700">
+                    Ver escuelas
+                </RouterLink>
+            </div>
+            <div v-else class="flex flex-col justify-center items-center">
+                <p> No tiene escuelas asignadas </p>
+                <RouterLink to="/pago"> Págar escuela </RouterLink>
+            </div>
         </section>
         
     </div>

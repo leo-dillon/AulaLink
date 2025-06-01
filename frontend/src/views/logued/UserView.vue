@@ -1,25 +1,20 @@
 <script setup>
 
-    import { onMounted, provide } from 'vue'
+    import { onMounted, provide, ref } from 'vue'
     import { RouterView } from 'vue-router'
     import Sidebar from '../../components/user/SideBar.vue'
     import axios from 'axios'
-
+    
+    let userSchool = ref(undefined)
     const userData = JSON.parse(localStorage.getItem('dataUser'))  
-    console.log(userData)   
-    let userId
-
-    if(userData !== null){
-        userId = userData.id
-    }
+    
     onMounted( async () => {
-        if(userId){
-            const userSchool = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/${userId}/escuela`);
-            console.log("Respuesta base", userSchool.data)
-        }
-        
+        let response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/${userData.id}/escuela`);
+        console.log(response.data)
+        userSchool.value = response.data
     })
     
+    provide('user_school', userSchool)
     provide('userData', userData)
 </script>
 

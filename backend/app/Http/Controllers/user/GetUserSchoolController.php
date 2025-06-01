@@ -11,10 +11,9 @@ use function PHPUnit\Framework\isEmpty;
 class GetUserSchoolController extends Controller
 {
     public function getUserSchool($userId){
-        $escuelas = DB::table('usuario_rol_escuela')
-            ->join('schools', 'usuario_rol_escuela.Escuela_ID', '=', 'schools.ID_Escuela')
-            ->where('usuario_rol_escuela.Usuario_ID', $userId)
-            ->select('schools.ID_Escuela', 'schools.Nombre')
+        $escuelas = DB::table('schools')
+            ->where('Usuario_ADM', $userId)
+            ->select('ID_Escuela', 'Nombre')
             ->get();
         if($escuelas -> isEmpty()){
             return response()->json([

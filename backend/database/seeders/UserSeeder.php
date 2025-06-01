@@ -17,12 +17,12 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'firstName' => 'Ticiano',
-                    'lastName' => 'Piccino Pujol' ,
+                    'firstName' => 'Leonardo',
+                    'lastName' => 'Dillon' ,
                     'gender' => 'Masculino' ,
                     'birthdate' =>  '2005-06-21',
                     'dni' =>  '12345678',
-                    'email' => 'ticiano.piccino@davinci.edu.ar' ,
+                    'email' => 'leonardo.dillon@davinci.edu.ar' ,
                     'address' => 'Buenos Aires' ,
                     'phone' => '2355550543' ,
                     'password' => bcrypt('1234567') ,
