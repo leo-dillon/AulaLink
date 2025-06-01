@@ -1,3 +1,4 @@
+import { isUserLogued } from '@/utils/auth/isUserLogued';
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -5,34 +6,39 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: () => import('../views/unlogued/HomeView.vue'),
+      meta: { isAuth: true }
+    },
+    {
+      path: '/user',
+      name: 'home',
+      component: () => import('../views/logued/UserView.vue'),
+      meta: { requiresAuth: true },
       children: [
         {
           path: '',
-          name: 'Bienvenido',
-          component: () => import('../components/TheWelcome.vue')
-        },
-        {
-          path: 'user',
           name: 'bienvenidoUsuario',
-          component: () => import('../components/InstitutionComponents/bienvenidoUsuario.vue')
+          component: () => import('../components/user/bienvenidoUsuario.vue'),
+          meta: { requiresAuth: true }
         },
         {
-          path: 'user/escuela',
+          path: 'escuela',
           name: 'escuelaUsuario',
-          component: () => import('../components/InstitutionComponents/MainInstitutionSubjects.vue')
+          component: () => import('../components/user/MainInstitutionSubjects.vue'),
+          meta: { requiresAuth: true }
         },
         {
-          path: 'user/calendario',
+          path: 'calendario',
           name: 'calendarioUsuario',
-          component: () => import('../components/InstitutionComponents/CalendarioUsuario.vue') 
+          component: () => import('../components/user/CalendarioUsuario.vue'),
+          meta: { requiresAuth: true }
         },
         {
-          path: 'user/editar',
+          path: 'editar',
           name: 'editarUsuario',
-          component: () => import('../components/InstitutionComponents/EditarUsuario.vue')
-
+          component: () => import('../components/user/EditarUsuario.vue'),
+          meta: { requiresAuth: true }
         }
       ]
     },
@@ -43,21 +49,25 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/unlogued/AboutView.vue'),
+      meta: { isAuth: true }
     },
     {
       path: '/iniciar-sesion',
       name: 'iniciar-sesion',
-      component: () => import('../views/unlogued/Login.vue')
+      component: () => import('../views/unlogued/Login.vue'),
+      meta: { isAuth: true }
     },
     {
       path: '/registrarse',
       name: 'registrarse',
-      component: () => import('../views/unlogued/Register.vue')
+      component: () => import('../views/unlogued/Register.vue'),
+      meta: { isAuth: true }
     },
     {
       path: '/contacto',
       name: 'contacto',
-      component: () => import('../views/unlogued/ContactView.vue')
+      component: () => import('../views/unlogued/ContactView.vue'),
+      meta: { isAuth: true }
     },
     {
       path: '/crear_escuela',
@@ -81,4 +91,17 @@ const router = createRouter({
   },
 })
 
+router.beforeEach((to, from, next) => {
+  if ( to.meta.requiresAuth && !isUserLogued() ) {
+    next('/') // redirige al login o página pública
+  } if ( to.meta.isAuth && isUserLogued() ){
+    next('/user')
+  }else {
+    next()
+  }
+})
+
+
 export default router
+
+

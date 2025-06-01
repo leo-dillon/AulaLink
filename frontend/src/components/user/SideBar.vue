@@ -47,25 +47,25 @@
     </div>
     <nav class="">
       <RouterLink 
-        to="/" 
+        to="/user/" 
         class="flex items-center gap-3 rounded hover:bg-gray-100 p-4"
       >
         <span class="material-icons">home</span> Inicio
       </RouterLink>
       
       <RouterLink 
-        to="/calendario" 
+        to="/user/calendario" 
         class="flex items-center gap-3 rounded hover:bg-gray-100 p-4"
       >
         <span class="material-icons">calendar_today</span> Calendar
       </RouterLink>
       
-      <RouterLink to="/escuela" class="flex items-center gap-3 rounded hover:bg-gray-100 p-4">
+      <RouterLink to="/user/escuela" class="flex items-center gap-3 rounded hover:bg-gray-100 p-4">
         <span class="material-icons">school</span>
         Escuela
       </RouterLink>
       
-      <RouterLink to="/editar_escuela/${id_institution}" class="flex items-center gap-3 rounded hover:bg-gray-100 p-4">
+      <RouterLink to="/user/editar_escuela/${id_institution}" class="flex items-center gap-3 rounded hover:bg-gray-100 p-4">
         <span class="material-icons">settings</span> Ajustes
       </RouterLink>
 
