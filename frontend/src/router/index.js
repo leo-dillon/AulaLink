@@ -45,11 +45,6 @@ const router = createRouter({
       component: () => import('../views/unlogued/AboutView.vue'),
     },
     {
-      path: '/contacto',
-      name: 'contacto',
-      component: () => import('../views/unlogued/ContactView.vue')
-    },
-    {
       path: '/iniciar-sesion',
       name: 'iniciar-sesion',
       component: () => import('../views/unlogued/Login.vue')
@@ -62,7 +57,7 @@ const router = createRouter({
     {
       path: '/contacto',
       name: 'contacto',
-      component: () => import('../views/unlogued/Contact.vue')
+      component: () => import('../views/unlogued/ContactView.vue')
     },
     {
       path: '/crear_escuela',

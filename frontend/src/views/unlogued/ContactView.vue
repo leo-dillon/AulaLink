@@ -1,65 +1,79 @@
 <script setup>
-import { ref } from 'vue'
+    import axios from 'axios';
+import { ref } from 'vue';
 
-const form = ref({
-  nombre: '',
-  email: '',
-  mensaje: ''
-})
+    const message = ref({
+        messaje:    '',
+        nombre:     '',
+        email:      '',
+    })
 
-function enviarFormulario() {
-  alert(`Gracias por tu mensaje, ${form.value.nombre}!`)
-  // Aquí podrías enviar los datos al backend
-  form.value = { nombre: '', email: '', mensaje: '' }
-}
+    const sendMessage = async ( ) => {
+        try {
+
+            const asd = await axios.post('https://formsubmit.co/ajax/jeannotegui@gmail.com', message.value, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json   "
+                }
+            })
+            console.log(asd);
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
 </script>
 
 <template>
-  <section class="mt-24 px-4">
-    <div class="max-w-3xl mx-auto bg-blue-100 p-8 rounded-xl shadow-lg">
-      <h1 class="text-3xl lg:text-4xl font-bold text-blue-800 text-center mb-8">
-        Contactanos
-      </h1>
+    <section class="max-w-xl mx-auto mt-16 p-6 bg-blue-100  shadow-xl/50 rounded-lg">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Contacto</h2>
+        <p class="text-gray-600 mb-6">Completá el formulario y nos pondremos en contacto con vos.</p>
 
-      <form @submit.prevent="enviarFormulario" class="space-y-6">
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1">Nombre</label>
-          <input
-            v-model="form.nombre"
-            type="text"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
-            required
-          />
-        </div>
-
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1">Correo electrónico</label>
-          <input
-            v-model="form.email"
-            type="email"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
-            required
-          />
-        </div>
-
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1">Mensaje</label>
-          <textarea
-            v-model="form.mensaje"
-            rows="5"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white resize-none"
-            required
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+        <form
+            @submit.prevent="sendMessage"
+            class="space-y-4"
         >
-          Enviar mensaje
-        </button>
-      </form>
-    </div>
-  </section>
-</template>
+        <!-- Nombre -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input
+                type="text"
+                v-model="message.nombre"
+                required
+                class="bg-white w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
 
+        <!-- Email -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Email</label>
+            <input
+                type="email"
+                v-model="message.email"
+                required
+                class="bg-white w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
+
+        <!-- Mensaje -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Mensaje</label>
+            <textarea
+                rows="4"
+                v-model="message.messaje"
+                required
+                class="bg-white w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+        </div>
+
+        <!-- Botón -->
+        <button
+            type="submit"
+            class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition cursor-pointer"
+        >
+            Enviar mensaje
+        </button>
+        </form>
+    </section>
+</template>
