@@ -7,18 +7,26 @@ import { ref } from 'vue';
         nombre:     '',
         email:      '',
     })
+    const loading = ref(false)
+
 
     const sendMessage = async ( ) => {
         try {
-
-            const asd = await axios.post('https://formsubmit.co/ajax/jeannotegui@gmail.com', message.value, {
+            loading.value = true
+            const res = await axios.post('https://formsubmit.co/ajax/jeannotegui@gmail.com', message.value, {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json   "
                 }
             })
-            console.log(asd);
-            
+            if( res.succes = true ){
+              loading.value = false
+              alert('Mensaje enviado. Aulalink se comunicará a la brevedad')
+            }else{
+              alert("Ocurrio un error")
+            }
+
+
         } catch (error) {
             console.log(error)
         }
@@ -72,7 +80,8 @@ import { ref } from 'vue';
             type="submit"
             class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition cursor-pointer"
         >
-            Enviar mensaje
+            <p v-if="loading"> Enviando ... </p>
+            <p v-else> Enviar mensaje </p>
         </button>
         </form>
     </section>
