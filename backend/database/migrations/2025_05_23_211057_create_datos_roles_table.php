@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('datos_roles', function (Blueprint $table) {
-    $table->id('ID_DatosRol');
-    $table->unsignedBigInteger('ID_UserRolEscuela');
-    $table->json('Datos')->nullable(); // Datos específicos del rol (legajo, turno, etc.)
-    $table->timestamps();
+        $table->id('ID_DatosRol');
+        $table->unsignedBigInteger('id_role');
+        $table->json('Datos')->nullable(); // Datos específicos del rol (legajo, turno, etc.)
+        $table->timestamps();
 
-    $table->foreign('ID_UserRolEscuela')->references('ID_UserRolEscuela')->on('usuario_rol_escuela')->onDelete('cascade');
+        $table->foreign('id_role')->references('id_role')->on('role')->onDelete('cascade');
 });
     }
 

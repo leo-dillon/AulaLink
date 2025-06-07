@@ -15,7 +15,7 @@ class UsuarioRolEscuela extends Model
     protected $fillable = [
         'Usuario_ID',
         'Escuela_ID',
-         'Rol_ID',
+         'id_role',
     ];
 
     // Relaciones
@@ -30,7 +30,7 @@ class UsuarioRolEscuela extends Model
     }
     public function rol()
 {
-    return $this->belongsTo(Role::class, 'Rol_ID', 'ID_Rol');
+    return $this->belongsTo(Role::class, 'id_role', 'id_role');
 }   
 }
 

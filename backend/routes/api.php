@@ -50,7 +50,25 @@ Route::post('/pago', [PagoController::class, 'store']);
 //
 Route::get('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'index']);
 Route::post('/usuario-rol-escuela', [UsuarioRolEscuelaController::class, 'store']);
-Route::get('/roles', [RoleController::class, 'index']);
+
+// -------------- ROL --------------
+
+// Traer todos los roles
+Route::get('/role', [RoleController::class, 'index']);
+
+// Trear un rol por el nombre
+Route::get('/role/{rolName}/name', [RoleController::class, 'getRoleByName'])
+    -> name('role.getByName');
+
+// Traer un rol por su id
+Route::get('/role/{idRole}/id', [RoleController::class, 'getRoleById'])
+    ->name('role.getById');
+
+// Crear un rol
+Route::post('/role', [RoleController::class, 'create'])
+    -> name('role.create');
+
+    // ---------------------------------
 
 
 Route::get('/campos-dinamicos/{idUsuario}', [DatosRolController::class, 'obtenerCampos']);

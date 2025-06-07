@@ -52,6 +52,7 @@ const sendMessage = async () => {
           v-model="message.nombre"
           required
           class="bg-white w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Leonardo Dillon"
         />
       </div>
 
@@ -63,6 +64,7 @@ const sendMessage = async () => {
           v-model="message.email"
           required
           class="bg-white w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="ejemplo@gmail.com"
         />
       </div>
 
@@ -74,6 +76,7 @@ const sendMessage = async () => {
           v-model="message.messaje"
           required
           class="bg-white w-full max-h-50 mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Envianos tus consultas aquí !!!"
         ></textarea>
       </div>
 

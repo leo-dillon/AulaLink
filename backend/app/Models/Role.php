@@ -10,14 +10,14 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $table = 'roles';
-    protected $primaryKey = 'ID_Rol';
+    protected $table = 'role';
+    protected $primaryKey = 'id_role';
 
-    protected $fillable = ['Nombre', 'Definicion'];
+    protected $fillable = ['name'];
 
     public function usuarios()
     {
-        return $this->belongsToMany(User::class, 'usuario_rol_escuela', 'Rol_ID', 'Usuario_ID')
+        return $this->belongsToMany(User::class, 'usuario_rol_escuela', 'id_role', 'Usuario_ID')
                     ->withPivot('Escuela_ID')
                     ->withTimestamps();
     }

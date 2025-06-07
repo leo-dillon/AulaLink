@@ -10,7 +10,7 @@ class DatosRol extends Model
 
     protected $primaryKey = 'ID_DatosRol';
 
-    protected $fillable = ['ID_UserRolEscuela', 'Datos'];
+    protected $fillable = ['id_rol', 'Datos'];
 
     protected $casts = [
         'Datos' => 'array',

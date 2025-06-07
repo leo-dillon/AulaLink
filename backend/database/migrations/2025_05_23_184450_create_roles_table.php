@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-    $table->id('ID_Rol');
-    $table->string('Nombre');
-    $table->json('Definicion')->nullable(); // Ej: campos requeridos para este rol
-    $table->timestamps();
+        Schema::create('role', function (Blueprint $table) {
+        $table->id('id_role');
+        $table->string('name')->unique();
+        $table->timestamps();
 });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('role');
     }
 };

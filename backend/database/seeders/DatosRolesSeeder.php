@@ -15,13 +15,7 @@ class DatosRolesSeeder extends Seeder
     {
         DB::table('datos_roles')->insert([
             [
-                'ID_UserRolEscuela' => 1, // Asegurate de que este ID exista en usuario_rol_escuela
-                'Datos' => json_encode([
-                    'legajo' => 'A1234',
-                    'Turno' => 'Mañana',
-                    'CursoActual_ID' => 3,
-                    'Estado' => 'activo'
-                ]),
+                'id_role' => 1, // Asegurate de que este ID exista en usuario_rol_escuela
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
