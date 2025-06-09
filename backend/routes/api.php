@@ -68,8 +68,12 @@ Route::get('/role/{idRole}/id', [RoleController::class, 'getRoleById'])
 Route::post('/role', [RoleController::class, 'create'])
     -> name('role.create');
 
-    // ---------------------------------
+// Editar un rol
+Route::put('/role/{id}', [RoleController::class, 'edit'])
+    -> name('role.edit');
 
+// Delete rol
+Route::delete('/role/{id}', [RoleController::class, 'delete'])
+    -> name('role.delete');
 
-Route::get('/campos-dinamicos/{idUsuario}', [DatosRolController::class, 'obtenerCampos']);
-Route::post('/datos-roles', [DatosRolController::class, 'store']);
+// ---------------------------------

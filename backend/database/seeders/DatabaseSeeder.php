@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             SchoolsSeeder::class,
             RolesSeeder::class,
             UsuarioRolEscuelaSeeder::class,
-             DatosRolesSeeder::class,
         ]);
     }
 }
