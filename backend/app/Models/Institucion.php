@@ -23,12 +23,11 @@ class Institucion extends Model
         'Nivel',
         'Tipo',
     ];
-    public function institucionesConRoles()
-{
-    return $this->belongsToMany(Institucion::class, 'usuario_rol_escuela', 'Usuario_ID', 'Escuela_ID')
-                ->withPivot('Rol_ID')
-                ->withTimestamps();
-}
+    public function institucionesConRoles(){
+        return $this->belongsToMany(Institucion::class, 'usuario_rol_escuela', 'Usuario_ID', 'Escuela_ID')
+                    ->withPivot('Rol_ID')
+                    ->withTimestamps();
+    }
 }
 
 

@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                     'email' => 'leonardo.dillon@davinci.edu.ar' ,
                     'address' => 'Buenos Aires' ,
                     'phone' => '2355550543' ,
-                    'password' => bcrypt('1234567') ,
+                    'password' => bcrypt('leoASD') ,
                     'asset' => true ,
                     'photo' => 'NULL',
                     
