@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuario_rol_escuela', function (Blueprint $table) {
-            $table->id('ID_UserRolEscuela');
-            $table->unsignedBigInteger('Usuario_ID');
-            $table->unsignedBigInteger('Escuela_ID');
+        Schema::create('user_rol_school', function (Blueprint $table) {
+            $table->id('id_user_rol_school');
+            
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('id_school');
+            $table->foreign('id_school')->references('id_school')->on('schools')->onDelete('cascade');
+            
             $table->unsignedBigInteger('id_role');
+            $table->foreign('id_role')->references('id_role')->on('role')->onDelete('cascade');
+            
             $table->timestamps();
             
-            // clave foranea
-            $table->foreign('Usuario_ID')->references('ID_Usuario')->on('users')->onDelete('cascade');
-            $table->foreign('Escuela_ID')->references('ID_Escuela')->on('schools')->onDelete('cascade');
-            $table->foreign('id_role')->references('id_role')->on('role')->onDelete('cascade');
-            $table->unique(['Usuario_ID', 'Escuela_ID', 'id_role']);
+            $table->unique(['id_user', 'id_school', 'id_role']);
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuario_rol_escuela');
+        Schema::dropIfExists('user_rol_school');
     }
 };

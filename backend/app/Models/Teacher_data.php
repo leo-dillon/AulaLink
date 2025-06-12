@@ -22,6 +22,6 @@ class Teacher_data extends Model
     ];
 
     public function user_rol_school(){
-        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_user_rol_school', 'ID_UserRolEscuela');
+        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_user_rol_school', 'id_user_rol_school');
     }
 }

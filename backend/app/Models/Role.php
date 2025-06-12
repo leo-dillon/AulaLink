@@ -17,8 +17,8 @@ class Role extends Model
 
     public function usuarios()
     {
-        return $this->belongsToMany(User::class, 'usuario_rol_escuela', 'id_role', 'Usuario_ID')
-                    ->withPivot('Escuela_ID')
+        return $this->belongsToMany(User::class, 'usuario_rol_escuela', 'id_role', 'id_user')
+                    ->withPivot('id_school')
                     ->withTimestamps();
     }
 }

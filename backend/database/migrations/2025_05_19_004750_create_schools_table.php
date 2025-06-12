@@ -12,31 +12,31 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('schools', function (Blueprint $table) {
-            $table -> id('ID_Escuela'); // ID autoincremental
+            $table -> id('id_school'); // ID autoincremental
             
-            $table -> string('Nombre');
+            $table -> string('name');
             
             $table -> string('CUE')->unique();
             
-            $table -> string('Direccion');
+            $table -> string('address');
             
-            $table -> string('Localidad');
+            $table -> string('city');
             
-            $table -> string('Provincia');
+            $table -> string('province');
             
-            $table -> string('Telefonos')->nullable(); // Puedes usar JSON si hay múltiples
+            $table -> json('phones')->nullable();
             
-            $table -> string('Emails')->nullable(); 
+            $table -> json('email')->nullable(); 
+                        
+            $table -> enum('level', ['Inicial', 'Primario', 'Secundario','Terciario']); 
             
-            $table -> timestamp('Fecha_Creacion')->useCurrent();
+            $table -> enum('type', ['Privado', 'Publico', 'subvencionada']);
             
-            $table -> enum('Nivel', ['Inicial', 'Primario', 'Secundario','Terciario']); 
-            
-            $table -> enum('Tipo', ['Privado', 'Publico', 'subvencionada']);
-            
-            $table -> string('Usuario_ADM')->nullable(); // podría ser una FK si hay tabla usuarios
-            
-            $table -> boolean('Activo')->default(true);
+            // Agregamos el campo director en
+            // backend\database\migrations\2025_06_12_032218_add_headmaster_foreign_key_to_schools_table.php
+            // Realizamos una migración parcial debido a la relación circular de User_rol_school y school
+
+            $table -> boolean('active')->default(true);
             
             $table -> timestamps();
         });

@@ -26,6 +26,6 @@ class Pago extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'usuario_id', 'ID_Usuario');
+        return $this->belongsTo(User::class, 'usuario_id', 'id_user');
     }
 }

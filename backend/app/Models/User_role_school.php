@@ -9,24 +9,24 @@ class UsuarioRolEscuela extends Model
 {
     use HasFactory;
 
-    protected $table = 'usuario_rol_escuela';
-    protected $primaryKey = 'ID_UserRolEscuela';
+    protected $table = 'user_rol_school';
+    protected $primaryKey = 'id_user_rol_school';
 
     protected $fillable = [
-        'Usuario_ID',
-        'Escuela_ID',
-         'id_role',
+        'id_user',
+        'id_school',
+        'id_role',
     ];
 
     // Relaciones
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'Usuario_ID', 'ID_Usuario');
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
     public function escuela()
     {
-        return $this->belongsTo(Institucion::class, 'Escuela_ID', 'ID_Escuela');
+        return $this->belongsTo(School::class, 'id_school', 'id_school');
     }
     public function rol()
 {

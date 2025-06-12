@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             // 💡 Corregimos el nombre de la columna en users:
-            $table->foreign('usuario_id')->references('ID_Usuario')->on('users')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

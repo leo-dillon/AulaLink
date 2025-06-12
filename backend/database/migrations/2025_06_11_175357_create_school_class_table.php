@@ -22,17 +22,17 @@ return new class extends Migration
 
             // FK del profesor asignado a dar la clase;
             $table -> unsignedBigInteger('id_user_teacher');
-            $table -> foreign('id_user_teacher') -> references('ID_USerRolEscuela')
-                -> on('usuario_rol_escuela') -> onDelete('cascade');
+            $table -> foreign('id_user_teacher') -> references('id_user_rol_school')
+                -> on('user_rol_school') -> onDelete('cascade');
 
             // FK del profesor Suplente
             $table -> unsignedBigInteger('id_user_substitute_teacher') -> nullable();
-            $table -> foreign('id_user_substitute_teacher') -> references('ID_USerRolEscuela')
-                -> on('usuario_rol_escuela') -> onDelete('cascade');
+            $table -> foreign('id_user_substitute_teacher') -> references('id_user_rol_school')
+                -> on('user_rol_school') -> onDelete('cascade');
 
             // FK de la escuela que tiene la clase
             $table -> unsignedBigInteger('id_school');
-            $table -> foreign('id_school') -> references('ID_Escuela')
+            $table -> foreign('id_school') -> references('id_school')
                 -> on('schools') -> onDelete('cascade');
 
             // Grado de la matería EJ 4 / 5 / 6

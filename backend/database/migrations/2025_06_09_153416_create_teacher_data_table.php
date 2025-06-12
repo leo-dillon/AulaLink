@@ -17,8 +17,8 @@ return new class extends Migration
 
             // FK de user_rol_school
             $table -> unsignedBigInteger('id_user_rol_school');
-            $table -> foreign('id_user_rol_school') -> references('ID_UserRolEscuela')
-                -> on('usuario_rol_escuela') -> onDelete('cascade');
+            $table -> foreign('id_user_rol_school') -> references('id_user_rol_school')
+                -> on('user_rol_school') -> onDelete('cascade');
 
             // CUIL de Teacher
             $table -> string('cuil') -> unique();

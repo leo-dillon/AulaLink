@@ -25,15 +25,15 @@ class School_class extends Model
     }
 
     public function teacher(){
-        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_user_teacher', 'ID_UserRolEscuela');
+        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_user_teacher', 'id_user_rol_school');
     }
 
     public function substitute_teacher() {
-        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_user_substitute_teacher', 'ID_UserRolEscuela');
+        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_user_substitute_teacher', 'id_user_rol_school');
     }
 
     public function school(){
-        return $this -> belongsTo(Institucion::class ,'id_school', 'ID_Escuela');
+        return $this -> belongsTo(School::class ,'id_school', 'id_school');
     }
 
 }
