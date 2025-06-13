@@ -4,10 +4,27 @@
 </script>
 
 <template>
-    <Header />
-    <div class="pt-20 bg-gray-100">
-        <RouterView />
+  <Header />
+  <div class="relative pt-20 min-h-screen bg-gray-100 overflow-hidden">
+    <div
+      class="absolute inset-0 z-0"
+      style="
+        background-image: url('/img/trama-2.png');
+        background-size: 600px;
+        background-position: center;
+        background-repeat: repeat;
+        mix-blend-mode: lighten;
+        background-color: rgba(255, 255, 255, 0.8);
+      "
+    ></div>
+    
+    <div class="relative z-10">
+      <RouterView />
     </div>
-    <Footer />
+  </div>
+  <Footer />
 </template>
+
+
+
 

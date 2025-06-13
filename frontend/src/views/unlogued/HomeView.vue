@@ -3,10 +3,10 @@
         <section class="w-full max-w-[1350px] mx-auto pt-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
             <div class="md:w-1/2 flex flex-col justify-between">
                 <h2 class="text-2xl text-center text-gray-800 md:text-5xl font-bold mb-4 leading-tight">
-                    Agiliza, Gestiona y Organizá tu institución
+                    Agiliza, gestiona y organizá tu institución
                 </h2>
                 <p class="my-6 text-lg text-gray-600 text-center text-balance leading-relaxed">
-                    ⭐ Te ayudamos a simplificar la vida escolar ⭐
+                     Te ayudamos a simplificar la vida escolar 
                 </p>
                 <button class="bg-blue-300 py-3 text-gray-8 00 text-lg font-semibold rounded shadow-xl/10 hover:scale-101 duration-200 cursor-pointer">
                     Hablá con nuestro equipo
