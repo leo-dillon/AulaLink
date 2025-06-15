@@ -26,16 +26,16 @@ return new class extends Migration
             
             $table -> json('phones')->nullable();
             
-            $table -> json('email')->nullable(); 
+            $table -> json('emails')->nullable(); 
                         
             $table -> enum('level', ['Inicial', 'Primario', 'Secundario','Terciario']); 
             
             $table -> enum('type', ['Privado', 'Publico', 'subvencionada']);
-            
-            // Agregamos el campo director en
-            // backend\database\migrations\2025_06_12_032218_add_headmaster_foreign_key_to_schools_table.php
-            // Realizamos una migración parcial debido a la relación circular de User_rol_school y school
 
+            $table -> unsignedBigInteger('id_user');
+            $table -> foreign('id_user') -> references('id_user')
+                -> on('users') -> onDelete('cascade');
+            
             $table -> boolean('active')->default(true);
             
             $table -> timestamps();

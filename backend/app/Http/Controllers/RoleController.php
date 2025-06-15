@@ -1,4 +1,4 @@
-<?php
+    <?php
 namespace App\Http\Controllers;
 
 use App\Models\Role;
@@ -15,7 +15,7 @@ class RoleController extends Controller
 
     public function getRoleByName(string $rolName){
         try {
-            $rolData = Role::where('name', $rolName)->first();
+            $rolData = Role::where('name', "like", "%". $rolName ."%");
             if(!$rolData){
                 return response() -> json([
                     'message' => 'El Rol buscado no existe'
@@ -120,9 +120,11 @@ class RoleController extends Controller
         try {
             $role = Role::findOrFail($idRole);
             $role->delete();
+
             return response()->json([
                 'message' => 'El rol fue eliminado correctamente'
             ], 200);
+            
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'El rol que quieres eliminar no existe'

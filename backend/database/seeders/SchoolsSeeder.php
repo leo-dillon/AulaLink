@@ -28,7 +28,7 @@ class SchoolsSeeder extends Seeder
                     'Tipo'=>'subvencionada',
                     'Usuario_ADM'=>'1',
                     'created_at' => now(),
-                'updated_at' => now(),
+                    'updated_at' => now(),
                 ],
                 [
                     'Nombre'=> 'Monse',
@@ -42,7 +42,7 @@ class SchoolsSeeder extends Seeder
                     'Tipo'=>'subvencionada',
                     'Usuario_ADM'=>'1',
                     'created_at' => now(),
-                'updated_at' => now(),
+                    'updated_at' => now(),
                 ],
 
             ]

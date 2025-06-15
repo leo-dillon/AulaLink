@@ -22,11 +22,11 @@ class School extends Model
         'emails',
         'level',
         'type',
-        'id_headMaster',
+        'id_user',
         'active'
     ];
     public function headMaster(){
-        return $this -> belongsTo(UsuarioRolEscuela::class, 'id_headMaster', 'id_user_rol_school');
+        return $this -> belongsTo(User::class, 'id_user', 'users');
     }
 }
 

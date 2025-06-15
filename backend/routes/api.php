@@ -11,6 +11,7 @@ use App\Http\Controllers\UsuarioRolEscuelaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DatosRolController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\school\SchoolController;
 use App\Http\Controllers\user\GetUserSchoolController;
 
 Route::post('/user/create', [RegisterController::class, 'store'])
@@ -36,13 +37,35 @@ Route::post('/user/edit/{id}', [EditController::class, 'editUser'])
 Route::get('/user/{id}/escuela', [GetUserSchoolController::class, 'getUserSchool'])
     -> name('user.school');
 
-Route::get('/instituciones/buscar', [InstitucionController::class, 'lookFor']);
-// crea las instituciones
-Route::post('/CreateInstituciones', [InstitucionController::class, 'store']);
+
+// -------------- SCHOOL --------------
+
+// Route::get('/instituciones/buscar', [InstitucionController::class, 'lookFor']);
+
+// buscar todas las escuelas
+Route::get('school', [SchoolController::class, 'getAll']);
+
+// buscar todas las escuelas por nombre
+Route::get('school/name/{name}', [SchoolController::class, 'getByName']);
+
+// Buscar una escuela por id
+Route::get('school/id/{id}', [SchoolController::class, 'getById']);
+
+// crear Escuela
+Route::post('/school', [SchoolController::class, 'create']);
+
+// Editar Escuela
+Route::put('/school/{id}', [SchoolController::class, 'edit']);
+
+// Eliminar Escuela
+Route::delete("/school/{id}", [SchoolController::class, 'delete']);
+
 // vista de edicion de la institucion
 Route::get('/Editar/Institucion/{id}', [EditInstitucionController::class, 'edit']);
 // envia la edicion
 Route::put('/Editar/Institucion/{id}', [EditInstitucionController::class, 'update']);
+
+// ------------------------------------
 
 Route::post('/pago', [PagoController::class, 'store']);
 
